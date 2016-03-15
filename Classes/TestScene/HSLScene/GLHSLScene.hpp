@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "HSLSprite.h"
-#include "cocos-ext.h"
+#include "extensions/cocos-ext.h"
 #include "TestBaseScene.hpp"
 
 using namespace cocos2d::extension;

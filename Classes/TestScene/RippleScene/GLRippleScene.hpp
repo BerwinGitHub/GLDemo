@@ -11,10 +11,8 @@
 
 #include "cocos2d.h"
 #include "HSLSprite.h"
-#include "cocos-ext.h"
 #include "TestBaseScene.hpp"
 
-using namespace cocos2d::extension;
 USING_NS_CC;
 
 class GLRippleScene : public TestBaseScene
