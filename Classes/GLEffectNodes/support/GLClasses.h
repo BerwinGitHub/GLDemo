@@ -314,7 +314,7 @@ protected:
 class Cpolygon
 {
 public:
-    vector<CCPoint> m_pointList;
+    vector<Vec2> m_pointList;
 };
 
 Cpolygon transPolygonByM4( const Cpolygon &polygon, const Mat4 &mat );

@@ -1,6 +1,6 @@
 //
 //  GLProgramWithUnifos.cpp
-//  Demo
+//  GLDemo
 //
 //  Created by yang tangbowen on 11/3/16.
 //

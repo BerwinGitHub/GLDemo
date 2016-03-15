@@ -8,17 +8,32 @@
 
 #include "VisualEffectLayer.hpp"
 
+
+const static GLfloat GL_COORDS[] = {
+    0.0f, 1.0f,
+    1.0f, 1.0f,
+    0.0f, 0.0f,
+    1.0f, 0.0f,
+};
+
+const static GLfloat GL_COLOR[] = {
+    1.0f, 1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f, 1.0f,
+    1.0f, 1.0f, 1.0f, 1.0f,
+};
+
 VisualEffectLayer::VisualEffectLayer():
 _iFrameRate(0),
-_fRadius(80.0f),
-_pBlurSprite(nullptr)
+_fRadius(80.0)
+//_pBlurSprite(nullptr)
 {
     
 }
 
 VisualEffectLayer::~VisualEffectLayer()
 {
-    
+    _pBlurTexture->release();
 }
 
 VisualEffectLayer* VisualEffectLayer::createWithRadius(const Size &size, int radius)
@@ -41,6 +56,10 @@ bool VisualEffectLayer::initWithRadius(const Size &size, int radius)
     _fRadius = radius;
     this->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     
+    _pBlurTexture = new Texture2D();
+    _pBlurTexture->autorelease();
+    _pBlurTexture->retain();
+    
 //    _pBlurSprite = Sprite::create();
 //    this->addChild(_pBlurSprite, 0);
 //    this->scheduleUpdate();
@@ -62,7 +81,7 @@ void VisualEffectLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &t
     if (++_iFrameRate >= 1) {
         _iFrameRate = 0;
         Rect bb = RectApplyAffineTransform(Rect(0, 0, _contentSize.width, _contentSize.height), this->getNodeToWorldAffineTransform());
-        prepareCommand(_globalZOrder + _localZOrder, bb, CC_CALLBACK_3(VisualEffectLayer::captureFinish, this));
+        prepareCommand(_globalZOrder == 0 ? _localZOrder : _globalZOrder, bb, CC_CALLBACK_3(VisualEffectLayer::captureFinish, this));
     }
     _customCommand.init(_globalZOrder);
     _customCommand.func = CC_CALLBACK_0(VisualEffectLayer::onDraw, this, transform, flags);
@@ -73,25 +92,40 @@ void VisualEffectLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &t
 
 void VisualEffectLayer::onDraw(const cocos2d::Mat4 &transform, uint32_t flags)
 {
-//    Director* director = Director::getInstance();
-//    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-//    director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, _modelViewTransform);
-//    Renderer* renderer = director->getRenderer();
-//    
-//    
-//    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+    Rect bb = RectApplyAffineTransform(Rect(0, 0, _contentSize.width, _contentSize.height), this->getNodeToWorldAffineTransform());
+    Size s = Size(_pBlurTexture->getPixelsWide(), _pBlurTexture->getPixelsHigh());
+    float x = bb.origin.x - (s.width * _anchorPoint.x);
+    float y = bb.origin.y - (s.height * _anchorPoint.y);
+    // 因为截图的时候y轴是反得,所以这是3,4,1,2 默认是1,2,3,4
+    const static GLfloat GL_VERTEX[] = {
+        x,              y + s.height,   0.0f,   // lt 3
+        x + s.width,    y + s.height,   0.0f,   // rt 4
+        x,              y,              0.0f,   // lb 1
+        x + s.width,    y,              0.0f,   // rb 2
+    };
+    
+    
+    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POS_COLOR_TEX);
+    _pBlurTexture->getGLProgram()->use();
+    _pBlurTexture->getGLProgram()->setUniformsForBuiltins();
+    
+    glBindTexture(GL_TEXTURE_2D, _pBlurTexture->getName());
+    
+    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, 0, GL_VERTEX);
+    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_FLOAT, GL_FALSE, 0, GL_COLOR);
+    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_TEX_COORDS, 2, GL_FLOAT, GL_FALSE, 0, GL_COORDS);
+    
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    
 }
 
 void onCaptureScreen(const std::function<void (unsigned char*, int w, int h)> func, Rect &bb)
 {
-//    utils::captureScreen(nullptr, "");
-//    Rect bb = this->getBoundingBox();
     int x = static_cast<int>(bb.origin.x);
     int y = static_cast<int>(bb.origin.y);
     int w = static_cast<int>(bb.size.width);
     int h = static_cast<int>(bb.size.height);
     int wh4 = w * h << 2;
-    int w4 = w << 2;
     
     do {
         std::shared_ptr<GLubyte> buffer(new GLubyte[wh4], [](GLubyte* p){ CC_SAFE_DELETE_ARRAY(p); });
@@ -108,40 +142,40 @@ void onCaptureScreen(const std::function<void (unsigned char*, int w, int h)> fu
         CCASSERT(w * h == static_cast<int>(renderTargetSize.width * renderTargetSize.height), "The frame size is not matched");
         glReadPixels(x, y, (int)renderTargetSize.width, (int)renderTargetSize.height, GL_RGBA, GL_UNSIGNED_BYTE, buffer.get());
 #else
-        glReadPixels(x, y, w, h, GL_RGBA, GL_UNSIGNED_BYTE, buffer.get());
+        glReadPixels(x, y, w, h, GL_RGBA, GL_UNSIGNED_BYTE, buffer.get());// 很费时间,需要优化
 #endif
         
-        std::shared_ptr<GLubyte> flippedBuffer(new GLubyte[wh4], [](GLubyte* p) { CC_SAFE_DELETE_ARRAY(p); });
-        if (!flippedBuffer) {
-            break;
-        }
+//        std::shared_ptr<GLubyte> flippedBuffer(new GLubyte[wh4], [](GLubyte* p) { CC_SAFE_DELETE_ARRAY(p); });
+//        if (!flippedBuffer) {
+//            break;
+//        }
+//        
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+//        int h4 = h << 2;
+//        if (w == static_cast<int>(renderTargetSize.width)) {
+//            // The current device orientation is portrait.
+//            for (int row = 0; row < h; ++row) {
+//                memcpy(flippedBuffer.get() + (h - row - 1) * w4, buffer.get() + row * w4, w4);
+//            }
+//        }else {
+//            // The current device orientation is landscape.
+//            for (int row = 0; row < w; ++row) {
+//                for (int col = 0; col < h; ++col) {
+//                    *(int*)(flippedBuffer.get() + (h - col - 1) * h4 + row << 2) = *(int*)(buffer.get() + row * h4 + col << 2);
+//                }
+//            }
+//        }
+//#else
+//        int w4 = w << 2;
+//        for (int row = 0; row < h; ++row) {
+//            memcpy(flippedBuffer.get() + (h - row - 1) * w4, buffer.get() + row * w4, w4);
+//        }
+//#endif
         
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
-        int h4 = h << 2;
-        if (w == static_cast<int>(renderTargetSize.width)) {
-            // The current device orientation is portrait.
-            for (int row = 0; row < h; ++row) {
-                memcpy(flippedBuffer.get() + (h - row - 1) * w4, buffer.get() + row * w4, w4);
-            }
-        }else {
-            // The current device orientation is landscape.
-            for (int row = 0; row < w; ++row) {
-                for (int col = 0; col < h; ++col) {
-                    *(int*)(flippedBuffer.get() + (h - col - 1) * h4 + row << 2) = *(int*)(buffer.get() + row * h4 + col << 2);
-                }
-            }
-        }
-#else
-        for (int row = 0; row < h; ++row) {
-            memcpy(flippedBuffer.get() + (h - row - 1) * w4, buffer.get() + row * w4, w4);
-        }
-#endif
-        
-        unsigned char *data = flippedBuffer.get();
+//        unsigned char *data = buffer.get();
         if (func) {
-            func(data, w, h);
+            func(buffer.get(), w, h);
         }
-//        Director::getInstance()->getRenderer()->render();
         
     }while(0);
 }
@@ -149,38 +183,26 @@ void onCaptureScreen(const std::function<void (unsigned char*, int w, int h)> fu
 void VisualEffectLayer::captureFinish(unsigned char *data, int w, int h)
 {
     stackblur(data, w, h, _fRadius, 4);
+    _pBlurTexture->initWithData(data, w * h << 2, Texture2D::PixelFormat::RGBA8888, w, h, _contentSize);
 
-    Texture2D* replaceTexture = new Texture2D();
-    replaceTexture->autorelease();
-    replaceTexture->initWithData(data, w * h << 2, Texture2D::PixelFormat::RGBA8888, w, h, _contentSize);
-    
-    if (!_pBlurSprite) {
-        _pBlurSprite = Sprite::createWithTexture(replaceTexture);
-//        _pBlurSprite->setFlippedY(true);
-        this->addChild(_pBlurSprite);
-    }else{
-        _pBlurSprite->setTexture(replaceTexture);
-    }
-    _pBlurSprite->setPosition(_contentSize * 0.5f);
-//    _pBlurSprite->setOpacity(240);
-}
-
-void VisualEffectLayer::update(float dt)
-{
-//    _fTime += dt;
-//    if(_fTime <= 2.0f){
-//        return;
+//    Texture2D* replaceTexture = new Texture2D();
+//    replaceTexture->autorelease();
+//    replaceTexture->initWithData(data, w * h << 2, Texture2D::PixelFormat::RGBA8888, w, h, _contentSize);
+//    
+//    if (!_pBlurSprite) {
+//        _pBlurSprite = Sprite::createWithTexture(replaceTexture);
+//        this->addChild(_pBlurSprite);
+//    }else{
+//        _pBlurSprite->setTexture(replaceTexture);
 //    }
-//    _fTime = 0;
-//    Rect bb = RectApplyAffineTransform(Rect(0, 0, _contentSize.width, _contentSize.height), this->getNodeToWorldAffineTransform());
-//    prepareCommand(_globalZOrder, bb, CC_CALLBACK_3(VisualEffectLayer::captureFinish, this));
+//    _pBlurSprite->setPosition(_contentSize * 0.5f);
 }
 
 void VisualEffectLayer::onEnter()
 {
     Node::onEnter();
-    Rect bb = RectApplyAffineTransform(Rect(0, 0, _contentSize.width, _contentSize.height), this->getNodeToWorldAffineTransform());
-    prepareCommand(_globalZOrder + 0.01, bb, CC_CALLBACK_3(VisualEffectLayer::captureFinish, this));
+//    Rect bb = RectApplyAffineTransform(Rect(0, 0, _contentSize.width, _contentSize.height), this->getNodeToWorldAffineTransform());
+//    prepareCommand(_globalZOrder + 0.01, bb, CC_CALLBACK_3(VisualEffectLayer::captureFinish, this));
 }
 
 void VisualEffectLayer::onExit()

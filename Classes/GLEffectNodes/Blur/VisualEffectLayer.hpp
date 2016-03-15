@@ -36,13 +36,12 @@ protected:
     
 protected:
     int   _iFrameRate;
-    virtual void update(float dt) override;
     
     void captureFinish(unsigned char *data, int w, int h);
     
 private:
-    Sprite* _pBlurSprite;
     float   _fRadius;
+    Texture2D*  _pBlurTexture;
     
 public:
     virtual void onEnter() override;
