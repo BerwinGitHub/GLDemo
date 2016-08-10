@@ -11,8 +11,9 @@
 #include "GLHSLScene.hpp"
 #include "GLRippleScene.hpp"
 #include "BlurScene.hpp"
+#include "SmearScene.hpp"
 
-#define LIST_NUM            3
+#define LIST_NUM            4
 #define LINE_SPACE          100
 
 static Vec2 s_tCurPos = Vec2::ZERO;
@@ -26,7 +27,8 @@ typedef struct _Controller{
 Controller g_aTestNames[LIST_NUM] = {
     { "GL:HSL(HSV) Sprite",  [](){ return GLHSLScene::scene();} },
     { "GL:Ripple Sprite",    [](){return GLRippleScene::scene(); } },
-    { "GL:Blur Sprite",  [](){return BlurScene::scene(); } }
+    { "GL:Blur Sprite",     [](){return BlurScene::scene(); } },
+    { "GL:Smear Sprite",    [](){return SmearScene::scene(); } }
 };
 
 ControllerScene::ControllerScene():

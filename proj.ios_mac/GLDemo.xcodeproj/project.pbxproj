@@ -47,9 +47,24 @@
 		80038F0E1C9165020030E7F4 /* GLClasses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80038F061C9165010030E7F4 /* GLClasses.cpp */; };
 		80038F111C9165530030E7F4 /* HSLShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 80038F101C9165530030E7F4 /* HSLShader.frag */; };
 		801B08C41C8E7B6B00F25ACA /* DragSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 801B08C21C8E7B6B00F25ACA /* DragSprite.cpp */; };
+		80357FC61D49DB47007C148C /* SmearScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FC41D49DB47007C148C /* SmearScene.cpp */; };
+		80357FDF1D49E330007C148C /* Scribble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FC81D49E330007C148C /* Scribble.cpp */; };
+		80357FE01D49E330007C148C /* ScribbleArmatureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FCA1D49E330007C148C /* ScribbleArmatureNode.cpp */; };
+		80357FE11D49E330007C148C /* ScribbleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FCC1D49E330007C148C /* ScribbleNode.cpp */; };
+		80357FE21D49E330007C148C /* ScribblePattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FCE1D49E330007C148C /* ScribblePattern.cpp */; };
+		80357FE31D49E330007C148C /* ScribblePatternNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FD01D49E330007C148C /* ScribblePatternNode.cpp */; };
+		80357FE41D49E330007C148C /* ScribblePatternShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 80357FD21D49E330007C148C /* ScribblePatternShader.frag */; };
+		80357FE51D49E330007C148C /* ScribbleShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 80357FD31D49E330007C148C /* ScribbleShader.frag */; };
+		80357FE61D49E330007C148C /* ScribbleShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FD41D49E330007C148C /* ScribbleShape.cpp */; };
+		80357FE71D49E330007C148C /* ScribbleShapeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FD61D49E330007C148C /* ScribbleShapeNode.cpp */; };
+		80357FE81D49E330007C148C /* ScribbleShapeShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 80357FD81D49E330007C148C /* ScribbleShapeShader.frag */; };
+		80357FE91D49E330007C148C /* ScribbleTouchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FD91D49E330007C148C /* ScribbleTouchNode.cpp */; };
+		80357FEA1D49E330007C148C /* ScribbleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FDB1D49E330007C148C /* ScribbleUtil.cpp */; };
+		80357FEB1D49E330007C148C /* ScribbleWireframeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80357FDD1D49E330007C148C /* ScribbleWireframeNode.cpp */; };
 		808AB54A1C925AD400B9E345 /* TestBaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB5481C925AD400B9E345 /* TestBaseScene.cpp */; };
 		808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB54B1C925D2600B9E345 /* ControllerScene.cpp */; };
 		808AB5511C9268D300B9E345 /* GLHSLScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB54F1C9268D300B9E345 /* GLHSLScene.cpp */; };
+		80E559B51D49D0C3008C29C0 /* SmearNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80E559B31D49D0C3008C29C0 /* SmearNode.cpp */; };
 		A20FFA221B3D0CD500A08F52 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A20FFA121B3D0CD500A08F52 /* Default-568h@2x.png */; };
 		A20FFA231B3D0CD500A08F52 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A20FFA131B3D0CD500A08F52 /* Default.png */; };
 		A20FFA241B3D0CD500A08F52 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A20FFA141B3D0CD500A08F52 /* Default@2x.png */; };
@@ -303,12 +318,40 @@
 		80038F101C9165530030E7F4 /* HSLShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HSLShader.frag; sourceTree = "<group>"; };
 		801B08C21C8E7B6B00F25ACA /* DragSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DragSprite.cpp; path = ../Classes/DragSprite.cpp; sourceTree = "<group>"; };
 		801B08C31C8E7B6B00F25ACA /* DragSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DragSprite.hpp; path = ../Classes/DragSprite.hpp; sourceTree = "<group>"; };
+		80357FC01D49D5DC007C148C /* SmearShaderFrag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmearShaderFrag.h; sourceTree = "<group>"; };
+		80357FC41D49DB47007C148C /* SmearScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearScene.cpp; sourceTree = "<group>"; };
+		80357FC51D49DB47007C148C /* SmearScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmearScene.hpp; sourceTree = "<group>"; };
+		80357FC81D49E330007C148C /* Scribble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scribble.cpp; sourceTree = "<group>"; };
+		80357FC91D49E330007C148C /* Scribble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scribble.h; sourceTree = "<group>"; };
+		80357FCA1D49E330007C148C /* ScribbleArmatureNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleArmatureNode.cpp; sourceTree = "<group>"; };
+		80357FCB1D49E330007C148C /* ScribbleArmatureNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleArmatureNode.h; sourceTree = "<group>"; };
+		80357FCC1D49E330007C148C /* ScribbleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleNode.cpp; sourceTree = "<group>"; };
+		80357FCD1D49E330007C148C /* ScribbleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleNode.h; sourceTree = "<group>"; };
+		80357FCE1D49E330007C148C /* ScribblePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribblePattern.cpp; sourceTree = "<group>"; };
+		80357FCF1D49E330007C148C /* ScribblePattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribblePattern.h; sourceTree = "<group>"; };
+		80357FD01D49E330007C148C /* ScribblePatternNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribblePatternNode.cpp; sourceTree = "<group>"; };
+		80357FD11D49E330007C148C /* ScribblePatternNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribblePatternNode.h; sourceTree = "<group>"; };
+		80357FD21D49E330007C148C /* ScribblePatternShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScribblePatternShader.frag; sourceTree = "<group>"; };
+		80357FD31D49E330007C148C /* ScribbleShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScribbleShader.frag; sourceTree = "<group>"; };
+		80357FD41D49E330007C148C /* ScribbleShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleShape.cpp; sourceTree = "<group>"; };
+		80357FD51D49E330007C148C /* ScribbleShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleShape.h; sourceTree = "<group>"; };
+		80357FD61D49E330007C148C /* ScribbleShapeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleShapeNode.cpp; sourceTree = "<group>"; };
+		80357FD71D49E330007C148C /* ScribbleShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleShapeNode.h; sourceTree = "<group>"; };
+		80357FD81D49E330007C148C /* ScribbleShapeShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScribbleShapeShader.frag; sourceTree = "<group>"; };
+		80357FD91D49E330007C148C /* ScribbleTouchNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleTouchNode.cpp; sourceTree = "<group>"; };
+		80357FDA1D49E330007C148C /* ScribbleTouchNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleTouchNode.h; sourceTree = "<group>"; };
+		80357FDB1D49E330007C148C /* ScribbleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleUtil.cpp; sourceTree = "<group>"; };
+		80357FDC1D49E330007C148C /* ScribbleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleUtil.h; sourceTree = "<group>"; };
+		80357FDD1D49E330007C148C /* ScribbleWireframeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleWireframeNode.cpp; sourceTree = "<group>"; };
+		80357FDE1D49E330007C148C /* ScribbleWireframeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleWireframeNode.h; sourceTree = "<group>"; };
 		808AB5481C925AD400B9E345 /* TestBaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestBaseScene.cpp; sourceTree = "<group>"; };
 		808AB5491C925AD400B9E345 /* TestBaseScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestBaseScene.hpp; sourceTree = "<group>"; };
 		808AB54B1C925D2600B9E345 /* ControllerScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerScene.cpp; sourceTree = "<group>"; };
 		808AB54C1C925D2600B9E345 /* ControllerScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ControllerScene.hpp; sourceTree = "<group>"; };
 		808AB54F1C9268D300B9E345 /* GLHSLScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLHSLScene.cpp; sourceTree = "<group>"; };
 		808AB5501C9268D300B9E345 /* GLHSLScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLHSLScene.hpp; sourceTree = "<group>"; };
+		80E559B31D49D0C3008C29C0 /* SmearNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearNode.cpp; sourceTree = "<group>"; };
+		80E559B41D49D0C3008C29C0 /* SmearNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmearNode.hpp; sourceTree = "<group>"; };
 		A20F9A961B95C62100C6BBC3 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = DEVELOPER_DIR; };
 		A20FFA121B3D0CD500A08F52 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A20FFA131B3D0CD500A08F52 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -660,6 +703,7 @@
 		80038EF61C9165010030E7F4 /* GLEffectNodes */ = {
 			isa = PBXGroup;
 			children = (
+				80E559B11D49D0B7008C29C0 /* SmearNode */,
 				54567E191C93E73700AE90F6 /* Blur */,
 				80038EF71C9165010030E7F4 /* HSLSprite */,
 				80038EFA1C9165010030E7F4 /* RippleSprite */,
@@ -711,9 +755,49 @@
 			path = shader;
 			sourceTree = "<group>";
 		};
+		80357FC31D49DB35007C148C /* SmearScene */ = {
+			isa = PBXGroup;
+			children = (
+				80357FC41D49DB47007C148C /* SmearScene.cpp */,
+				80357FC51D49DB47007C148C /* SmearScene.hpp */,
+			);
+			path = SmearScene;
+			sourceTree = "<group>";
+		};
+		80357FC71D49E330007C148C /* scribble */ = {
+			isa = PBXGroup;
+			children = (
+				80357FC81D49E330007C148C /* Scribble.cpp */,
+				80357FC91D49E330007C148C /* Scribble.h */,
+				80357FCA1D49E330007C148C /* ScribbleArmatureNode.cpp */,
+				80357FCB1D49E330007C148C /* ScribbleArmatureNode.h */,
+				80357FCC1D49E330007C148C /* ScribbleNode.cpp */,
+				80357FCD1D49E330007C148C /* ScribbleNode.h */,
+				80357FCE1D49E330007C148C /* ScribblePattern.cpp */,
+				80357FCF1D49E330007C148C /* ScribblePattern.h */,
+				80357FD01D49E330007C148C /* ScribblePatternNode.cpp */,
+				80357FD11D49E330007C148C /* ScribblePatternNode.h */,
+				80357FD21D49E330007C148C /* ScribblePatternShader.frag */,
+				80357FD31D49E330007C148C /* ScribbleShader.frag */,
+				80357FD41D49E330007C148C /* ScribbleShape.cpp */,
+				80357FD51D49E330007C148C /* ScribbleShape.h */,
+				80357FD61D49E330007C148C /* ScribbleShapeNode.cpp */,
+				80357FD71D49E330007C148C /* ScribbleShapeNode.h */,
+				80357FD81D49E330007C148C /* ScribbleShapeShader.frag */,
+				80357FD91D49E330007C148C /* ScribbleTouchNode.cpp */,
+				80357FDA1D49E330007C148C /* ScribbleTouchNode.h */,
+				80357FDB1D49E330007C148C /* ScribbleUtil.cpp */,
+				80357FDC1D49E330007C148C /* ScribbleUtil.h */,
+				80357FDD1D49E330007C148C /* ScribbleWireframeNode.cpp */,
+				80357FDE1D49E330007C148C /* ScribbleWireframeNode.h */,
+			);
+			path = scribble;
+			sourceTree = "<group>";
+		};
 		808AB5341C924E7200B9E345 /* TestScene */ = {
 			isa = PBXGroup;
 			children = (
+				80357FC31D49DB35007C148C /* SmearScene */,
 				54567E271C94237E00AE90F6 /* BlurScene */,
 				54567E151C93DA7E00AE90F6 /* RippleScene */,
 				808AB54E1C9268D300B9E345 /* HSLScene */,
@@ -741,6 +825,25 @@
 				808AB5501C9268D300B9E345 /* GLHSLScene.hpp */,
 			);
 			path = HSLScene;
+			sourceTree = "<group>";
+		};
+		80E559B11D49D0B7008C29C0 /* SmearNode */ = {
+			isa = PBXGroup;
+			children = (
+				80357FC71D49E330007C148C /* scribble */,
+				80E559B21D49D0B7008C29C0 /* shader */,
+				80E559B31D49D0C3008C29C0 /* SmearNode.cpp */,
+				80E559B41D49D0C3008C29C0 /* SmearNode.hpp */,
+			);
+			path = SmearNode;
+			sourceTree = "<group>";
+		};
+		80E559B21D49D0B7008C29C0 /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				80357FC01D49D5DC007C148C /* SmearShaderFrag.h */,
+			);
+			path = shader;
 			sourceTree = "<group>";
 		};
 		A20FFA111B3D0CD500A08F52 /* Defaults */ = {
@@ -935,6 +1038,7 @@
 			files = (
 				A20FFA261B3D0CD500A08F52 /* AppIcon29x29@2x.png in Resources */,
 				80038EA11C9117E60030E7F4 /* shaders in Resources */,
+				80357FE81D49E330007C148C /* ScribbleShapeShader.frag in Resources */,
 				A20FFA271B3D0CD500A08F52 /* AppIcon40x40.png in Resources */,
 				A20FFA241B3D0CD500A08F52 /* Default@2x.png in Resources */,
 				80038E9E1C9117E60030E7F4 /* fonts in Resources */,
@@ -943,6 +1047,7 @@
 				80038E9D1C9117E60030E7F4 /* CloseSelected.png in Resources */,
 				80038F111C9165530030E7F4 /* HSLShader.frag in Resources */,
 				A20FFA221B3D0CD500A08F52 /* Default-568h@2x.png in Resources */,
+				80357FE41D49E330007C148C /* ScribblePatternShader.frag in Resources */,
 				A20FFA2A1B3D0CD500A08F52 /* AppIcon57x57@2x.png in Resources */,
 				A20FFA321B3D0CE900A08F52 /* Info.plist in Resources */,
 				A20FFA291B3D0CD500A08F52 /* AppIcon57x57.png in Resources */,
@@ -956,6 +1061,7 @@
 				A20FFA2B1B3D0CD500A08F52 /* AppIcon60x60.png in Resources */,
 				80038EA01C9117E60030E7F4 /* HelloWorld.png in Resources */,
 				80038E9C1C9117E60030E7F4 /* CloseNormal.png in Resources */,
+				80357FE51D49E330007C148C /* ScribbleShader.frag in Resources */,
 				A20FFA231B3D0CD500A08F52 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -976,23 +1082,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				801B08C41C8E7B6B00F25ACA /* DragSprite.cpp in Sources */,
+				80357FDF1D49E330007C148C /* Scribble.cpp in Sources */,
+				80357FE31D49E330007C148C /* ScribblePatternNode.cpp in Sources */,
+				80357FE91D49E330007C148C /* ScribbleTouchNode.cpp in Sources */,
+				80357FC61D49DB47007C148C /* SmearScene.cpp in Sources */,
+				80357FE21D49E330007C148C /* ScribblePattern.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				54567E181C93DA7E00AE90F6 /* GLRippleScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				80357FEA1D49E330007C148C /* ScribbleUtil.cpp in Sources */,
+				80E559B51D49D0C3008C29C0 /* SmearNode.cpp in Sources */,
 				54567E241C93E73700AE90F6 /* BlurHelper.cpp in Sources */,
 				54567E2A1C94237E00AE90F6 /* BlurScene.cpp in Sources */,
+				80357FE71D49E330007C148C /* ScribbleShapeNode.cpp in Sources */,
 				80038F091C9165020030E7F4 /* RippleSprite.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				54567E261C93E73700AE90F6 /* VisualEffectLayer.cpp in Sources */,
+				80357FE11D49E330007C148C /* ScribbleNode.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				80357FEB1D49E330007C148C /* ScribbleWireframeNode.cpp in Sources */,
 				808AB5511C9268D300B9E345 /* GLHSLScene.cpp in Sources */,
+				80357FE61D49E330007C148C /* ScribbleShape.cpp in Sources */,
 				80038F081C9165010030E7F4 /* HSLSprite.cpp in Sources */,
 				808AB54A1C925AD400B9E345 /* TestBaseScene.cpp in Sources */,
 				80038F0A1C9165020030E7F4 /* GLMath.cpp in Sources */,
 				808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */,
 				80038F0E1C9165020030E7F4 /* GLClasses.cpp in Sources */,
 				54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */,
+				80357FE01D49E330007C148C /* ScribbleArmatureNode.cpp in Sources */,
 				80038F0B1C9165020030E7F4 /* GLProgramUnifos.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,8 +1186,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1098,9 +1216,9 @@
 					"-ObjC",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tangbowen.ios-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peter.gl-demo";
 				PRODUCT_NAME = "GLDemo iOS";
-				PROVISIONING_PROFILE = "f657d9e2-4de3-42f1-bb80-0e8a407f6a26";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1112,8 +1230,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1140,9 +1258,9 @@
 					"-ObjC",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tangbowen.ios-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peter.gl-demo";
 				PRODUCT_NAME = "GLDemo iOS";
-				PROVISIONING_PROFILE = "f657d9e2-4de3-42f1-bb80-0e8a407f6a26";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
