@@ -14,14 +14,13 @@
 USING_NS_CC;
 using namespace std;
 
-extern CC_DLL const GLchar *SmearShadeFrag;
+extern CC_DLL const GLchar *smearPositonTextureColor_frag;
 #define kSmearShaderName "SmearShadeName"
 
-typedef Sprite Target;
-typedef Sprite Paint;
-typedef RenderTexture Canvas;
+typedef Sprite Target;  // smear need shown obj
+typedef Sprite Paint;   // smear paint
 
-class SmearNode : public Node {
+class SmearNode : public RenderTexture {
     
 public:
     SmearNode();
@@ -30,56 +29,74 @@ public:
 public:
     enum class PaintType {
         kPaint,
-        kEaser,
-        kEaserFade
+        kEaser
     };
     
 public:
     static SmearNode* create(const Target *t, const Paint *p);
+    static SmearNode* create(const string &tFile, const string &pFile);
     virtual bool init(const Target *t, const Paint *p);
     
+    virtual void draw(const Vec2 &pos);
+    virtual void draw(const Vec2 &startPos, const Vec2 &endPos);
+    virtual void draw(vector<Vec2> pWorldPositions);
+    
+    virtual void drawSelf();
+    virtual void clearSelf();
+    
+public:
+    /**
+     * @brief paint type getter & setter.
+     */
     void setPaintType(SmearNode::PaintType t);
-    
-    void draw(Vec2 pPosition);
-    void draw(Vec2 pStartPosition, Vec2 pEndPosition);
-    void draw(vector<Vec2> pWorldPositions);
-    
-    void setPaintTexture(Texture2D* tex);
-    void setTargetTexture(Texture2D* tex);
-    
     PaintType getPaintType();
+    
+    /**
+     * @brief paint soft transition value getter & setter.
+     */
+    void setPaintHardness(float hard);
+    float getPaintHardness();
+    
+    /**
+     * @brief paint texture getter & setter.
+     */
+    void setPaintTexture(Texture2D* tex);
+    Paint *getPaint();
+    
+    /**
+     * @brief target texture getter & setter.
+     */
+    void setTargetTexture(Texture2D* tex);
+    Target *getTarget();
     
 private:
     void initShader();
     
     void bindPaintPosition(Vec2 p);
-    void bindPaintAlphaValue(float v);
-    void bindTargetAlphaValue(float v);
-    void bindTargetSolid(bool s, float r = 1.0f);
-    
-    void bindAntiAliasingPaint(bool b);
-    
     void bindPaintTexture();
     void bindTargetTexture();
     
-private:
-    Target  *_pTarget;
-    Paint   *_pPaint;
-    Canvas  *_pCanvas;
-    PaintType _ePaintType;
+    void bindPaintAlphaValue(float v);
+    void bindTargetAlphaValue(float v);
+    void bindAntiAliasingPaint(bool b);
     
-    bool    _bAntiAliasingPaint;
+protected:
+    Target      *_pTarget;
+    Paint       *_pPaint;
+    PaintType   _ePaintType;
+    
+    bool        _bAntiAliasingPaint;
+    float       _fPaintHardness;
+    
+    CC_SYNTHESIZE(Size, _sTargetMiddle, TargetMiddle);
+    CC_SYNTHESIZE(Size, _sPaintMiddle, PaintMiddle);
     
 public:
     virtual void onEnter() override;
     virtual void onExit() override;
     
 private:
-    string createUniqueGLProgramName(string name, void *p);
-    GLProgram *loadGLProgram(const GLchar *vert, const GLchar *frag, string key);
     void setGLProgram(Node *n, GLProgram *p);
-    
-    vector<Vec2> interpolate(Vec2 pStartPosition, Vec2 pEndPosition, float pDelta);
     
 };
 

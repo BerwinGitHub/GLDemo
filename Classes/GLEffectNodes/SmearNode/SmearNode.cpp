@@ -8,11 +8,15 @@
 
 #include "SmearNode.hpp"
 #include "./shader/SmearShaderFrag.h"
+#include "./support/GLProgramUtility.hpp"
+#include "./support/smearMath.hpp"
 
 SmearNode::SmearNode()
-: _pTarget(nullptr)
-, _pPaint(nullptr)
-, _pCanvas(nullptr)
+: _pPaint(nullptr)
+, _pTarget(nullptr)
+, _fPaintHardness(1.0f)
+, _sPaintMiddle(Vec2::ZERO)
+, _sTargetMiddle(Vec2::ZERO)
 , _bAntiAliasingPaint(false)
 , _ePaintType(PaintType::kPaint)
 {
@@ -26,7 +30,6 @@ SmearNode::~SmearNode()
 {
     CC_SAFE_RELEASE_NULL(_pPaint);
     CC_SAFE_RELEASE_NULL(_pTarget);
-    CC_SAFE_RELEASE_NULL(_pCanvas);
 }
 
 SmearNode* SmearNode::create(const Target *t, const Paint *p)
@@ -40,57 +43,92 @@ SmearNode* SmearNode::create(const Target *t, const Paint *p)
     return nullptr;
 }
 
+SmearNode* SmearNode::create(const string &tFile, const string &pFile)
+{
+    return SmearNode::create(Target::create(tFile), Paint::create(pFile));
+}
+
 bool SmearNode::init(const Target *t, const Paint *p)
 {
-    if (!Node::init()) {
+    if (!RenderTexture::initWithWidthAndHeight(t->getContentSize().width, t->getContentSize().height, Texture2D::PixelFormat::RGBA8888, 0)) {
         return false;
     }
     this->initShader();
     this->setPaintTexture(p->getTexture());
     this->setPaintType(SmearNode::PaintType::kPaint);
     
-    _pCanvas = Canvas::create(t->getContentSize().width, t->getContentSize().height);
-    _pCanvas->retain();
-    this->addChild(_pCanvas);
-    this->setContentSize(t->getContentSize());
-    
     this->setTargetTexture(t->getTexture());
     
     return true;
 }
 
-void SmearNode::draw(cocos2d::Vec2 pPosition)
+void SmearNode::draw(const cocos2d::Vec2 &pos)
 {
-    vector<Vec2> lPositions;
-    lPositions.push_back(pPosition);
-    this->draw(lPositions);
+    this->SmearNode::draw(vector<Vec2>{pos});
 }
 
-void SmearNode::draw(cocos2d::Vec2 pStartPosition, cocos2d::Vec2 pEndPosition)
+void SmearNode::draw(const cocos2d::Vec2 &startPos, const cocos2d::Vec2 &endPos)
 {
-    int lDelta = _pPaint->getContentSize().width / 4.0 * _pPaint->getScaleX();//5.0 * pBrush->getScale();  5.0 * pBrush->getScale();//
-    vector<Vec2> lPositions = this->interpolate(pStartPosition, pEndPosition, lDelta);
-    this->draw(lPositions);
+    int delta = _pPaint->getContentSize().width * 0.25f * _pPaint->getScaleX();//5.0 * pBrush->getScale();  5.0 * pBrush->getScale();//
+    vector<Vec2> vPosition = smearMath::interpolate(startPos, endPos, delta);
+    this->SmearNode::draw(vPosition);
 }
 
 void SmearNode::draw(vector<cocos2d::Vec2> pWorldPositions)
 {
     for (int i = 0; i < pWorldPositions.size(); ++i) {
-        Vec2 lPosition = _pCanvas->getSprite()->convertToNodeSpace(pWorldPositions.at(i));
-        Size lCanvasSize = _pCanvas->getSprite()->getContentSize();
-        Rect lCanvasBoundingBox = Rect(0, 0, lCanvasSize.width, lCanvasSize.height);
-        if (lCanvasBoundingBox.containsPoint(lPosition)) {
+        Vec2 pos = this->getSprite()->convertToNodeSpace(pWorldPositions.at(i));
+        Size size = this->getSprite()->getContentSize();
+        Rect boundingBox = Rect(0, 0, size.width, size.height);
+        if (boundingBox.containsPoint(pos)) {
             //set the coord of pen at the target
-            this->bindPaintPosition(lPosition);
+            this->bindPaintPosition(pos);
             //draw
-            _pPaint->setPosition(lPosition);
+            _pPaint->setPosition(pos);
             
-            _pCanvas->begin();
+            this->begin();
             _pPaint->visit();
-            _pCanvas->end();
+            this->end();
             Director::getInstance()->getRenderer()->render();
         }
     }
+}
+
+void SmearNode::drawSelf()
+{
+    Texture2D *texture = _pPaint->getTexture();
+    float hard = this->getPaintHardness();
+    SmearNode::PaintType eType = this->getPaintType();
+    
+    this->setPaintTexture(_pTarget->getTexture());
+    this->setPaintHardness(1.0f);
+    this->setPaintType(SmearNode::PaintType::kPaint);
+    
+    this->SmearNode::draw(this->getSprite()->convertToWorldSpace(_sTargetMiddle));
+    
+    this->setPaintTexture(texture);
+    this->setPaintHardness(hard);
+    this->setPaintType(eType);
+}
+
+void SmearNode::clearSelf()
+{
+    this->clear(0, 0, 0, 0);
+}
+
+void SmearNode::setPaintHardness(float hard)
+{
+    CCASSERT(hard <= 1.0f && hard >= 0.0f, "Hard value must in [0.0,1.0]");
+    _fPaintHardness = hard;
+    int solid = (hard == 1.0f) ? 1 : 0;
+    solid = (_ePaintType == SmearNode::PaintType::kPaint) ? 1 : solid;
+    GLUtility::bindUniformInt(_pPaint, "b_solid_enable", solid);
+    GLUtility::bindUniformFloat(_pPaint, "f_solid_rate", 1.0f - hard);
+}
+
+float SmearNode::getPaintHardness()
+{
+    return _fPaintHardness;
 }
 
 void SmearNode::setPaintType(SmearNode::PaintType t)
@@ -98,9 +136,9 @@ void SmearNode::setPaintType(SmearNode::PaintType t)
     _ePaintType = t;
     switch (_ePaintType) {
         case SmearNode::PaintType::kPaint:{
-            this->bindTargetSolid(true, 0.1f);
             BlendFunc f = _bAntiAliasingPaint ? BlendFunc({GL_ONE, GL_ONE_MINUS_SRC_ALPHA }) : BlendFunc({GL_ONE, GL_ZERO});
             _pPaint->setBlendFunc(f);
+            GLUtility::bindUniformInt(_pPaint, "b_solid_enable", 1);
             break;
         }
 //        case eAdditiveBrush:{
@@ -113,16 +151,10 @@ void SmearNode::setPaintType(SmearNode::PaintType t)
 //            lBrush->setBlendFunc(f);
 //            
 //            break;
-            //        }
-        case SmearNode::PaintType::kEaserFade:{
-            this->bindTargetSolid(false, 0.1f);
-            BlendFunc f = {GL_ZERO, GL_SRC_ALPHA };
-            _pPaint->setBlendFunc(f);
-            break;
-        }
+//        }
         case SmearNode::PaintType::kEaser:{
-            this->bindTargetSolid(false);
-            BlendFunc f = {GL_ZERO, GL_SRC_ALPHA };
+            GLUtility::bindUniformInt(_pPaint, "b_solid_enable", 0);
+            BlendFunc f = { GL_ZERO, GL_SRC_ALPHA };
             _pPaint->setBlendFunc(f);
             break;
         }
@@ -138,110 +170,95 @@ SmearNode::PaintType SmearNode::getPaintType()
 
 void SmearNode::setPaintTexture(cocos2d::Texture2D *tex)
 {
+    if (!tex)
+        return;
     SpriteFrame *frame = SpriteFrame::createWithTexture(tex, Rect(0, 0, tex->getContentSize().width, tex->getContentSize().height));
     _pPaint->setSpriteFrame(frame);
+    _sPaintMiddle = _pPaint->getContentSize() * 0.5f;
     this->bindPaintTexture();
 }
 
 void SmearNode::setTargetTexture(cocos2d::Texture2D *tex)
 {
-    _pTarget->setPosition(_pCanvas->getSprite()->getContentSize() * 0.5f);
-    SpriteFrame *frame = SpriteFrame::createWithTexture(tex, Rect(0, 0, tex->getContentSize().width, tex->getContentSize().height));
+    if (!tex)
+        return;
+    Size ts = tex->getContentSize();
+    _pTarget->setPosition(this->getSprite()->getContentSize() * 0.5f);
+    SpriteFrame *frame = SpriteFrame::createWithTexture(tex, Rect(0, 0, ts.width, ts.height));
     _pTarget->setSpriteFrame(frame);
+    _sTargetMiddle = _pTarget->getContentSize() * 0.5f;
     this->bindTargetTexture();
+}
+
+Target *SmearNode::getTarget()
+{
+    return _pTarget;
+}
+
+Paint *SmearNode::getPaint()
+{
+    return _pPaint;
 }
 
 void SmearNode::initShader()
 {
-    string key = this->createUniqueGLProgramName(kSmearShaderName, this);
-    GLProgram *p = this->loadGLProgram(ccPositionTextureColor_noMVP_vert, SmearShadeFrag, key);
+    string key = GLUtility::generatedUniqueGLProgramKey(kSmearShaderName, this);
+    GLProgram *p = GLUtility::loadGLProgram(ccPositionTextureColor_noMVP_vert, smearPositonTextureColor_frag, key);
     if (p && _pPaint->getGLProgram() != p) {
         this->setGLProgram(_pPaint, p);
         
         this->bindPaintAlphaValue(0.0f);
         this->bindTargetAlphaValue(0.0f);
-        this->bindTargetSolid(true);
+        this->setPaintHardness(1.0f);
         this->bindPaintTexture();
     }
 }
 
 void SmearNode::bindPaintPosition(cocos2d::Vec2 p)
 {
-    float lX = (p.x - _pTarget->getPosition().x + _pTarget->getContentSize().width / 2.0 - _pPaint->getContentSize().width / 2.0);
-    float lY = _pTarget->getContentSize().height - (p.y - _pTarget->getPosition().y + _pTarget->getContentSize().height / 2.0 + _pPaint->getContentSize().height / 2.0);
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformVec2("v_texCoord_target", Vec2(lX,lY));
+    float lX = (p.x - _pTarget->getPosition().x + _sTargetMiddle.width - _sPaintMiddle.width);
+    float lY = _pTarget->getContentSize().height - (p.y - _pTarget->getPosition().y + _sTargetMiddle.height + _sPaintMiddle.height);
+    GLUtility::bindUniformVec2(_pPaint, "v_texCoord_target", Vec2(lX, lY));
 }
 
 void SmearNode::bindPaintAlphaValue(float v)
 {
     CCASSERT(v <= 1.0f && v >= 0.0f, "Apha value must in [0.0,1.0]");
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformFloat("f_alpha_value_paint", v);
+    GLUtility::bindUniformFloat(_pPaint, "f_alpha_value_paint", v);
 }
 
 void SmearNode::bindTargetAlphaValue(float v)
 {
     CCASSERT(v <= 1.0f && v >= 0.0f, "Apha value must in [0.0,1.0]");
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformFloat("f_alpha_value_target", v);
-}
-
-void SmearNode::bindTargetSolid(bool s, float r/* = 1.0f*/)
-{
-    int lIsSolid = s ? 1 : 0;
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformInt("v_solid_paint", lIsSolid);
-    lState->setUniformFloat("v_solid_rate", r);
+    GLUtility::bindUniformFloat(_pPaint, "f_alpha_value_target", v);
 }
 
 void SmearNode::bindAntiAliasingPaint(bool b)
 {
     _bAntiAliasingPaint = b;
-    int lAntiAliasingBrush = _bAntiAliasingPaint ? 1 : 0;
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformInt("anti_aliasing_paint", lAntiAliasingBrush);
+    GLUtility::bindUniformInt(_pPaint, "b_paint_anti_aliasing", _bAntiAliasingPaint ? 1 : 0);
 }
 
 void SmearNode::bindPaintTexture()
 {
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformVec2("v_texSize_paint", Vec2(_pPaint->getContentSize().width, _pPaint->getContentSize().height));
-    lState->setUniformTexture("s_texture_paint", _pPaint->getTexture());
+    GLUtility::bindUniformVec2(_pPaint, "v_texSize_paint", _pPaint->getContentSize());
+    GLUtility::bindUniformTexture(_pPaint, "s_texture_paint", _pPaint->getTexture());
 }
 
 void SmearNode::bindTargetTexture()
 {
-    GLProgramState *lState = GLProgramState::getOrCreateWithGLProgram(_pPaint->getGLProgram());
-    lState->setUniformVec2("v_texSize_target", Vec2(_pTarget->getContentSize().width, _pTarget->getContentSize().height));
-    lState->setUniformTexture("s_texture_target", _pTarget->getTexture());
+    GLUtility::bindUniformVec2(_pPaint, "v_texSize_target", _pTarget->getContentSize());
+    GLUtility::bindUniformTexture(_pPaint, "s_texture_target", _pTarget->getTexture());
 }
 
 void SmearNode::onEnter()
 {
-    Node::onEnter();
+    RenderTexture::onEnter();
 }
 
 void SmearNode::onExit()
 {
-    Node::onExit();
-}
-
-string SmearNode::createUniqueGLProgramName(string name, void *p)
-{
-    char cKey[512];
-    sprintf(cKey, "%s%p", name.c_str(), p);
-    return string(cKey);
-}
-
-GLProgram *SmearNode::loadGLProgram(const GLchar *vert, const GLchar *frag, string key)
-{
-    GLProgram *p = GLProgram::createWithByteArrays(vert, frag);
-    CHECK_GL_ERROR_DEBUG();
-    if (nullptr != p) {
-        GLProgramCache::getInstance()->addGLProgram(p, key);
-    }
-    return p;
+    RenderTexture::onExit();
 }
 
 void SmearNode::setGLProgram(Node *n, GLProgram *p)
@@ -255,21 +272,4 @@ void SmearNode::setGLProgram(Node *n, GLProgram *p)
             this->setGLProgram(lNode, p);
         }
     }
-}
-
-vector<Vec2> SmearNode::interpolate(Vec2 pStartPosition, Vec2 pEndPosition, float pDelta)
-{
-    float lDistance = pStartPosition.getDistance(pEndPosition);
-    int lDis = (int)lDistance;
-    
-    vector<Vec2> lPositions;
-    for (int i = 0; i < lDis; i += pDelta) {
-        float lDelta = float(i) / lDistance;
-        float lDifX = pEndPosition.x - pStartPosition.x;
-        float lDifY = pEndPosition.y - pStartPosition.y;
-        
-        Vec2 lPosition(pStartPosition.x + (lDifX * lDelta), pStartPosition.y + (lDifY * lDelta));
-        lPositions.push_back(lPosition);
-    }
-    return lPositions;
 }
