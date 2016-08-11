@@ -15,7 +15,7 @@ USING_NS_CC;
 using namespace std;
 
 extern CC_DLL const GLchar *smearPositonTextureColor_frag;
-#define kSmearShaderName "SmearShadeName"
+#define kSmearShaderName "SmearShaderName"
 
 typedef Sprite Target;  // smear need shown obj
 typedef Sprite Paint;   // smear paint
@@ -69,8 +69,8 @@ public:
     void setTargetTexture(Texture2D* tex);
     Target *getTarget();
     
-private:
-    void initShader();
+protected:
+    virtual void initShader();
     
     void bindPaintPosition(Vec2 p);
     void bindPaintTexture();
@@ -79,6 +79,8 @@ private:
     void bindPaintAlphaValue(float v);
     void bindTargetAlphaValue(float v);
     void bindAntiAliasingPaint(bool b);
+    
+    void setGLProgram(Node *n, GLProgram *p);
     
 protected:
     Target      *_pTarget;
@@ -94,9 +96,6 @@ protected:
 public:
     virtual void onEnter() override;
     virtual void onExit() override;
-    
-private:
-    void setGLProgram(Node *n, GLProgram *p);
     
 };
 

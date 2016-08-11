@@ -52,6 +52,8 @@
 		8076DC231D5B058900E81E10 /* SmearNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8076DC1C1D5B058900E81E10 /* SmearNode.cpp */; };
 		8076DC241D5B058900E81E10 /* GLProgramUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8076DC1F1D5B058900E81E10 /* GLProgramUtility.cpp */; };
 		8076DC271D5B1A3A00E81E10 /* animation in Resources */ = {isa = PBXBuildFile; fileRef = 8076DC261D5B1A3A00E81E10 /* animation */; };
+		807FA2481D5C696900E5CE8A /* SmearColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 807FA2461D5C696900E5CE8A /* SmearColor.cpp */; };
+		807FA24C1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag in Resources */ = {isa = PBXBuildFile; fileRef = 807FA24B1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag */; };
 		808AB54A1C925AD400B9E345 /* TestBaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB5481C925AD400B9E345 /* TestBaseScene.cpp */; };
 		808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB54B1C925D2600B9E345 /* ControllerScene.cpp */; };
 		808AB5511C9268D300B9E345 /* GLHSLScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB54F1C9268D300B9E345 /* GLHSLScene.cpp */; };
@@ -310,7 +312,7 @@
 		801B08C31C8E7B6B00F25ACA /* DragSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DragSprite.hpp; path = ../Classes/DragSprite.hpp; sourceTree = "<group>"; };
 		80357FC41D49DB47007C148C /* SmearScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearScene.cpp; sourceTree = "<group>"; };
 		80357FC51D49DB47007C148C /* SmearScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmearScene.hpp; sourceTree = "<group>"; };
-		8076DC191D5B058900E81E10 /* SmearShaderFrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmearShaderFrag.h; sourceTree = "<group>"; };
+		8076DC191D5B058900E81E10 /* SmearShaderFrag.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SmearShaderFrag.frag; sourceTree = "<group>"; };
 		8076DC1A1D5B058900E81E10 /* SmearArmature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearArmature.cpp; sourceTree = "<group>"; };
 		8076DC1B1D5B058900E81E10 /* SmearArmature.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmearArmature.hpp; sourceTree = "<group>"; };
 		8076DC1C1D5B058900E81E10 /* SmearNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearNode.cpp; sourceTree = "<group>"; };
@@ -319,6 +321,9 @@
 		8076DC201D5B058900E81E10 /* GLProgramUtility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLProgramUtility.hpp; sourceTree = "<group>"; };
 		8076DC211D5B058900E81E10 /* smearMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = smearMath.hpp; sourceTree = "<group>"; };
 		8076DC261D5B1A3A00E81E10 /* animation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = animation; sourceTree = "<group>"; };
+		807FA2461D5C696900E5CE8A /* SmearColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearColor.cpp; sourceTree = "<group>"; };
+		807FA2471D5C696900E5CE8A /* SmearColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmearColor.hpp; sourceTree = "<group>"; };
+		807FA24B1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SmearColorShaderFrag.frag; sourceTree = "<group>"; };
 		808AB5481C925AD400B9E345 /* TestBaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestBaseScene.cpp; sourceTree = "<group>"; };
 		808AB5491C925AD400B9E345 /* TestBaseScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestBaseScene.hpp; sourceTree = "<group>"; };
 		808AB54B1C925D2600B9E345 /* ControllerScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerScene.cpp; sourceTree = "<group>"; };
@@ -746,6 +751,8 @@
 				8076DC1B1D5B058900E81E10 /* SmearArmature.hpp */,
 				8076DC1C1D5B058900E81E10 /* SmearNode.cpp */,
 				8076DC1D1D5B058900E81E10 /* SmearNode.hpp */,
+				807FA2461D5C696900E5CE8A /* SmearColor.cpp */,
+				807FA2471D5C696900E5CE8A /* SmearColor.hpp */,
 				8076DC1E1D5B058900E81E10 /* support */,
 			);
 			path = smearnode;
@@ -754,7 +761,8 @@
 		8076DC181D5B058900E81E10 /* shader */ = {
 			isa = PBXGroup;
 			children = (
-				8076DC191D5B058900E81E10 /* SmearShaderFrag.h */,
+				807FA24B1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag */,
+				8076DC191D5B058900E81E10 /* SmearShaderFrag.frag */,
 			);
 			path = shader;
 			sourceTree = "<group>";
@@ -995,6 +1003,7 @@
 				A20FFA261B3D0CD500A08F52 /* AppIcon29x29@2x.png in Resources */,
 				80038EA11C9117E60030E7F4 /* shaders in Resources */,
 				A20FFA271B3D0CD500A08F52 /* AppIcon40x40.png in Resources */,
+				807FA24C1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag in Resources */,
 				A20FFA241B3D0CD500A08F52 /* Default@2x.png in Resources */,
 				80038E9E1C9117E60030E7F4 /* fonts in Resources */,
 				A20FFA2F1B3D0CD500A08F52 /* AppIcon76x76.png in Resources */,
@@ -1041,6 +1050,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				8076DC221D5B058900E81E10 /* SmearArmature.cpp in Sources */,
 				54567E181C93DA7E00AE90F6 /* GLRippleScene.cpp in Sources */,
+				807FA2481D5C696900E5CE8A /* SmearColor.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				54567E241C93E73700AE90F6 /* BlurHelper.cpp in Sources */,
 				54567E2A1C94237E00AE90F6 /* BlurScene.cpp in Sources */,

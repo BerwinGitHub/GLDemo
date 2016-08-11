@@ -7,7 +7,7 @@
 //
 
 #include "SmearNode.hpp"
-#include "./shader/SmearShaderFrag.h"
+#include "./shader/SmearShaderFrag.frag"
 #include "./support/GLProgramUtility.hpp"
 #include "./support/smearMath.hpp"
 
