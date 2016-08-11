@@ -10,6 +10,7 @@
 #include "SmearNode.hpp"
 #include "SmearArmature.hpp"
 #include "cocostudio/CocoStudio.h"
+#include "SmearColor.hpp"
 
 using namespace cocostudio;
 
@@ -31,6 +32,15 @@ bool SmearScene::init()
         return false;
     }
     Size visibleSize = Director::getInstance()->getVisibleSize();
+    SmearColor *sc = SmearColor::createWithShape(Shape::create("images/scrrible_rect.png"));
+    sc->setPaintTexture(Paint::create("images/solid_32_feather.png")->getTexture());
+    sc->setPaintType(SmearNode::PaintType::kPaint);
+    sc->setTargetColor(Color4B(255, 0, 0, 255));
+    sc->setPosition(visibleSize * 0.5f);
+    this->addChild(sc);
+    
+    
+    return true;
     
     ArmatureDataManager::getInstance()->addArmatureFileInfo("animation/cake/cake.ExportJson");
     

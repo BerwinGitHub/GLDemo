@@ -15,41 +15,43 @@ const char* smearColorPositonTextureColor_frag = STRINGIFY(
  varying vec4 v_fragmentColor;
  varying vec2 v_texCoord;
  
- uniform sampler2D s_texture_brush;
+ uniform sampler2D s_texture_paint;
  uniform sampler2D s_texture_target;
- uniform sampler2D s_texture_shape;
- uniform float f_alpha_value_brush;
+ uniform float f_alpha_value_paint;
  uniform float f_alpha_value_target;
  uniform vec2 v_texCoord_target;
- uniform vec2 v_texSize_brush;
+ uniform vec2 v_texSize_paint;
  uniform vec2 v_texSize_target;
- uniform vec2 v_texSize_shape;
- uniform int v_solid_brush;
- uniform vec4 v_color_target;
- uniform int v_taret_type_color;
- uniform int anti_aliasing_brush;
+ uniform int b_solid_enable;
+ uniform int b_paint_anti_aliasing;
+                                                           
+uniform sampler2D s_texture_shape;
+uniform vec2 v_texSize_shape;
+                                                           
+uniform vec4 v_color_target;
+uniform int v_taret_type_color;
  
  void main()
 {
-    vec4 texColor = texture2D(s_texture_brush, v_texCoord);
+    vec4 texColor = texture2D(s_texture_paint, v_texCoord);
     
     // mimic: glAlphaFunc(GL_GREATER)
-    // pass if ( incoming_pixel >= f_alpha_value_brush ) => fail if incoming_pixel < f_alpha_value_brush
+    // pass if ( incoming_pixel >= f_alpha_value_paint ) => fail if incoming_pixel < f_alpha_value_paint
     
-    if ( texColor.a <= f_alpha_value_brush )
+    if ( texColor.a <= f_alpha_value_paint )
         discard;
     
     vec4 texColor_target = v_color_target;
     if(0 == v_taret_type_color){
-        vec2 v_texCoord2 = (v_texCoord_target + v_texCoord * v_texSize_brush) / v_texSize_target;
+        vec2 v_texCoord2 = (v_texCoord_target + v_texCoord * v_texSize_paint) / v_texSize_target;
         texColor_target = texture2D(s_texture_target, v_texCoord2);
     }
     
     // mimic: glAlphaFunc(GL_GREATER)
-    // pass if ( incoming_pixel >= f_alpha_value_brush ) => fail if incoming_pixel < f_alpha_value_brush
+    // pass if ( incoming_pixel >= f_alpha_value_paint ) => fail if incoming_pixel < f_alpha_value_paint
     //    if ( texColor_target.a < f_alpha_value_target )
     //        discard;
-    vec2 v_texCoord2 = (v_texCoord_target + v_texCoord * v_texSize_brush) / v_texSize_shape;
+    vec2 v_texCoord2 = (v_texCoord_target + v_texCoord * v_texSize_paint) / v_texSize_shape;
     vec4 texColor_shape = texture2D(s_texture_shape, v_texCoord2);
     
     vec4 lColor;
@@ -58,13 +60,13 @@ const char* smearColorPositonTextureColor_frag = STRINGIFY(
     }
     else{
         lColor = texColor_target;
-        if(1 == anti_aliasing_brush){
+        if(1 == b_paint_anti_aliasing){
             lColor *= texColor.a;
         }
     }
     lColor *= v_fragmentColor;
     
-    if(0 != v_solid_brush){
+    if(0 != b_solid_enable){
         gl_FragColor = lColor;
     }
     else{

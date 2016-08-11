@@ -56,6 +56,12 @@ void GLProgramUtility::bindUniformVec2(cocos2d::Node *n, const string &glAttr, c
     state->setUniformVec2(glAttr, v);
 }
 
+void GLProgramUtility::bindUniformVec4(cocos2d::Node *n, const string &glAttr, const cocos2d::Vec4 &v)
+{
+    GLProgramState *state = GLProgramUtility::getGLProgramState(n);
+    state->setUniformVec4(glAttr, v);
+}
+
 void GLProgramUtility::bindUniformTexture(cocos2d::Node *n, const string &glAttr, cocos2d::Texture2D *t)
 {
     GLProgramState *state = GLProgramUtility::getGLProgramState(n);

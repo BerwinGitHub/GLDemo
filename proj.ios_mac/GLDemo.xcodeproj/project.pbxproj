@@ -28,6 +28,7 @@
 		5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
 		5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */; };
 		5087E76717EB910900C73F5D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
+		543B993D1D5C8C3A00E8FC4A /* SmearColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543B993B1D5C8C3A00E8FC4A /* SmearColor.cpp */; };
 		54567E181C93DA7E00AE90F6 /* GLRippleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E161C93DA7E00AE90F6 /* GLRippleScene.cpp */; };
 		54567E241C93E73700AE90F6 /* BlurHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E1B1C93E73700AE90F6 /* BlurHelper.cpp */; };
 		54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E201C93E73700AE90F6 /* StackBlurSprite.cpp */; };
@@ -276,6 +277,8 @@
 		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		5087E76F17EB910900C73F5D /* GLDemo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GLDemo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		543B993B1D5C8C3A00E8FC4A /* SmearColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SmearColor.cpp; path = ../SmearNode/SmearColor.cpp; sourceTree = "<group>"; };
+		543B993C1D5C8C3A00E8FC4A /* SmearColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SmearColor.hpp; path = ../SmearNode/SmearColor.hpp; sourceTree = "<group>"; };
 		54567E161C93DA7E00AE90F6 /* GLRippleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLRippleScene.cpp; sourceTree = "<group>"; };
 		54567E171C93DA7E00AE90F6 /* GLRippleScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLRippleScene.hpp; sourceTree = "<group>"; };
 		54567E1B1C93E73700AE90F6 /* BlurHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlurHelper.cpp; sourceTree = "<group>"; };
@@ -749,6 +752,8 @@
 				8076DC181D5B058900E81E10 /* shader */,
 				8076DC1A1D5B058900E81E10 /* SmearArmature.cpp */,
 				8076DC1B1D5B058900E81E10 /* SmearArmature.hpp */,
+				543B993B1D5C8C3A00E8FC4A /* SmearColor.cpp */,
+				543B993C1D5C8C3A00E8FC4A /* SmearColor.hpp */,
 				8076DC1C1D5B058900E81E10 /* SmearNode.cpp */,
 				8076DC1D1D5B058900E81E10 /* SmearNode.hpp */,
 				807FA2461D5C696900E5CE8A /* SmearColor.cpp */,
@@ -1066,6 +1071,7 @@
 				80038F0A1C9165020030E7F4 /* GLMath.cpp in Sources */,
 				808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */,
 				80038F0E1C9165020030E7F4 /* GLClasses.cpp in Sources */,
+				543B993D1D5C8C3A00E8FC4A /* SmearColor.cpp in Sources */,
 				54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */,
 				80038F0B1C9165020030E7F4 /* GLProgramUnifos.cpp in Sources */,
 			);

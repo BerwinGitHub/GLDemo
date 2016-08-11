@@ -60,13 +60,13 @@ public:
     /**
      * @brief paint texture getter & setter.
      */
-    void setPaintTexture(Texture2D* tex);
+    virtual void setPaintTexture(Texture2D* tex);
     Paint *getPaint();
     
     /**
      * @brief target texture getter & setter.
      */
-    void setTargetTexture(Texture2D* tex);
+    virtual void setTargetTexture(Texture2D* tex);
     Target *getTarget();
     
 protected:

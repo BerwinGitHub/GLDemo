@@ -55,6 +55,11 @@ public:
     static void bindUniformVec2(Node *n, const string &glAttr, const Vec2 &v);
     
     /**
+     * @brief bind shader value for type vec4
+     */
+    static void bindUniformVec4(Node *n, const string &glAttr, const Vec4 &v);
+    
+    /**
      * @brief bind shader value for type texture
      */
     static void bindUniformTexture(Node *n, const string &glAttr, Texture2D *t);
