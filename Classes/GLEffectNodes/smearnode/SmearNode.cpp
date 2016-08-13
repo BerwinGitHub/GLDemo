@@ -30,6 +30,8 @@ SmearNode::~SmearNode()
 {
     CC_SAFE_RELEASE_NULL(_pPaint);
     CC_SAFE_RELEASE_NULL(_pTarget);
+    this->removeAllChildren();
+    Director::getInstance()->getTextureCache()->removeUnusedTextures();
 }
 
 SmearNode* SmearNode::create(const Target *t, const Paint *p)
@@ -180,10 +182,9 @@ void SmearNode::setPaint(cocos2d::Texture2D *tex)
 
 void SmearNode::setTarget(cocos2d::Texture2D *tex)
 {
-    if (!tex)
+    if (!tex) // tex size same as before setting.
         return;
     Size ts = tex->getContentSize();
-    this->initWithWidthAndHeight(ts.width, ts.height, Texture2D::PixelFormat::RGBA8888, 0);
     _pTarget->setPosition(this->getSprite()->getContentSize() * 0.5f);
     SpriteFrame *frame = SpriteFrame::createWithTexture(tex, Rect(0, 0, ts.width, ts.height));
     _pTarget->setSpriteFrame(frame);

@@ -11,6 +11,7 @@
 #include "./support/GLProgramUtility.hpp"
 
 SmearRGBA::SmearRGBA()
+: _bReverse(false)
 {
     
 }
@@ -20,10 +21,10 @@ SmearRGBA::~SmearRGBA()
     
 }
 
-SmearRGBA* SmearRGBA::createWithRGBA(const cocos2d::Color4B &c)
+SmearRGBA* SmearRGBA::createWithRGBA(TargetShape *s, const cocos2d::Color4B &c)
 {
     SmearRGBA *pRet = new SmearRGBA();
-    if (pRet && pRet->initWithRGBA(c)) {
+    if (pRet && pRet->initWithRGBA(s, c)) {
         pRet->autorelease();
         return pRet;
     }
@@ -31,13 +32,19 @@ SmearRGBA* SmearRGBA::createWithRGBA(const cocos2d::Color4B &c)
     return nullptr;
 }
 
-bool SmearRGBA::initWithRGBA(const cocos2d::Color4B &c)
+SmearRGBA* SmearRGBA::createWithRGBA(const string &trFile, const cocos2d::Color4B &c)
 {
-    if (!SmearNode::init(Target::create("images/scrrible_rect.png"), Paint::create())) {
+    return SmearRGBA::createWithRGBA(TargetShape::create(trFile), c);
+}
+
+bool SmearRGBA::initWithRGBA(TargetShape *s, const cocos2d::Color4B &c)
+{
+    if (!SmearNode::init(s, Paint::create())) {
         return false;
     }
     this->setTargetColor(c);
-    this->bindShapeTexture();
+    this->bindShapeTexture();// bind target size
+    this->setReverse(false);
     
     return true;
 }
@@ -79,12 +86,33 @@ void SmearRGBA::setTargetColor(const cocos2d::Color4B &c)
     this->setTargetColor(Color4F(c));
 }
 
+void SmearRGBA::setReverse(bool reverse)
+{
+    _bReverse = reverse;
+    GLUtility::bindUniformInt(_pPaint, "b_reverse_shape", _bReverse ? 1 : 0);
+}
+
+bool SmearRGBA::isReverse()
+{
+    return _bReverse;
+}
+
+void SmearRGBA::randomColor()
+{
+    auto seq = Sequence::create(DelayTime::create(0.05f), CallFunc::create([=](){
+        this->setTargetColor(Color4B(rand() % 255, rand() % 255, rand() % 255, 255));
+    }), nullptr);
+    this->runAction(RepeatForever::create(seq));
+}
+
 void SmearRGBA::onEnter()
 {
     SmearNode::onEnter();
+    this->randomColor();
 }
 
 void SmearRGBA::onExit()
 {
+    this->stopAllActions();
     SmearNode::onExit();
 }

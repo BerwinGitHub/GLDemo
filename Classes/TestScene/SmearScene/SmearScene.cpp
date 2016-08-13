@@ -45,12 +45,15 @@ bool SmearScene::init()
 //    sc->setTargetColor(Color4B(255, 0, 0, 255));
 //    sc->setPosition(visibleSize * 0.5f);
 //    this->addChild(sc);
-    SmearRGBA *srgba = SmearRGBA::createWithRGBA(Color4B(255, 0, 0, 255));
+    SmearRGBA *srgba = SmearRGBA::createWithRGBA("animation/cake/cream/1.png", Color4B(255, 0, 0, 255));
     srgba->setPaint("images/solid_32_feather.png");
     srgba->setPaintType(SmearNode::PaintType::kPaint);
     srgba->setPosition(visibleSize * 0.5f);
     this->addChild(srgba);
-    srgba->SmearNode::setTarget("images/dim.png");
+//    srgba->setAntiAliasingPaint(false);
+    srgba->antiAliasing();
+//    srgba->SmearNode::setTarget("animation/cake/cream/1.png");
+//    srgba->SmearNode::setTarget("images/dim.png");
     
     EventListenerTouchOneByOne *e1 = EventListenerTouchOneByOne::create();
     e1->setSwallowTouches(true);
@@ -61,6 +64,11 @@ bool SmearScene::init()
         srgba->draw(t->getPreviousLocation(), t->getLocation());
     };
     e1->onTouchEnded = [=](Touch* t, Event *e){
+        srgba->clearSelf();
+        srgba->setReverse(!srgba->isReverse());
+//        static int i = 1;
+//        i = ++i % 16 + 1;
+//        srgba->SmearNode::setTarget(StringUtils::format("animation/cake/cream/%d.png", i));
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(e1, this);
     

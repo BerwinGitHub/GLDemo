@@ -8,30 +8,31 @@
 
 #define STRINGIFY(A)  #A
 const char* SmearRGBAPositonTextureColor_frag = STRINGIFY(
- \n#ifdef GL_ES\n
- precision highp float;
- \n#endif\n
- 
- varying vec4 v_fragmentColor;
- varying vec2 v_texCoord;
- 
- uniform sampler2D s_texture_paint;
- uniform sampler2D s_texture_target;
- uniform float f_alpha_value_paint;
- uniform float f_alpha_value_target;
- uniform vec2 v_texCoord_target;
- uniform vec2 v_texSize_paint;
- uniform vec2 v_texSize_target;
- uniform int b_solid_enable;
- uniform int b_paint_anti_aliasing;
-                                                           
+\n#ifdef GL_ES\n
+precision highp float;
+\n#endif\n
+
+varying vec4 v_fragmentColor;
+varying vec2 v_texCoord;
+
+uniform sampler2D s_texture_paint;
+uniform sampler2D s_texture_target;
+uniform float f_alpha_value_paint;
+uniform float f_alpha_value_target;
+uniform vec2 v_texCoord_target;
+uniform vec2 v_texSize_paint;
+uniform vec2 v_texSize_target;
+uniform int b_solid_enable;
+uniform int b_paint_anti_aliasing;
+uniform int b_reverse_shape;
+                                                          
 uniform sampler2D s_texture_shape;
 uniform vec2 v_texSize_shape;
                                                            
 uniform vec4 v_color_target;
 uniform int v_taret_type_color;
- 
- void main()
+                                                          
+void main()
 {
     vec4 texColor = texture2D(s_texture_paint, v_texCoord);
     
@@ -42,7 +43,7 @@ uniform int v_taret_type_color;
         discard;
     
     vec4 texColor_target = v_color_target;
-    if(0 == v_taret_type_color){
+    if(0 == v_taret_type_color){// texture
         vec2 v_texCoord2 = (v_texCoord_target + v_texCoord * v_texSize_paint) / v_texSize_target;
         texColor_target = texture2D(s_texture_target, v_texCoord2);
     }
@@ -55,7 +56,9 @@ uniform int v_taret_type_color;
     vec4 texColor_shape = texture2D(s_texture_shape, v_texCoord2);
     
     vec4 lColor;
-    if(0.0 == texColor_shape.a){
+    if(b_reverse_shape == 0 && 0.0 == texColor_shape.a){// normal
+        discard;
+    } else if(b_reverse_shape == 1 && 0.0 != texColor_shape.a){// reverse
         discard;
     } else {
         lColor = texColor_target;
@@ -63,6 +66,8 @@ uniform int v_taret_type_color;
             lColor *= texColor.a;
         }
     }
+    
+    
     lColor *= v_fragmentColor;
     
     if(0 != b_solid_enable){
