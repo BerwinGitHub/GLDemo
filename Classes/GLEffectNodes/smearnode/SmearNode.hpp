@@ -48,26 +48,35 @@ public:
     /**
      * @brief paint type getter & setter.
      */
-    void setPaintType(SmearNode::PaintType t);
+    virtual void setPaintType(SmearNode::PaintType t);
     PaintType getPaintType();
     
     /**
      * @brief paint soft transition value getter & setter.
      */
-    void setPaintHardness(float hard);
+    virtual void setPaintHardness(float hard);
     float getPaintHardness();
     
     /**
      * @brief paint texture getter & setter.
      */
-    virtual void setPaintTexture(Texture2D* tex);
+    virtual void setPaint(Texture2D* tex);
+    virtual void setPaint(const string &file);
     Paint *getPaint();
     
     /**
      * @brief target texture getter & setter.
      */
-    virtual void setTargetTexture(Texture2D* tex);
+    virtual void setTarget(Texture2D* tex);
+    virtual void setTarget(const string &file);
     Target *getTarget();
+    
+    /**
+     * @brief antiAliasing & disAntiAliasing.
+     */
+    virtual void antiAliasing();
+    virtual void disAntiAliasing();
+    virtual void setAntiAliasingPaint(bool enable);
     
 protected:
     virtual void initShader();

@@ -10,12 +10,19 @@
 #include "SmearNode.hpp"
 #include "SmearArmature.hpp"
 #include "cocostudio/CocoStudio.h"
-#include "SmearColor.hpp"
+//#include "SmearColor.hpp"
+#include "SmearRGBA.hpp"
 
 using namespace cocostudio;
 
 SmearScene::SmearScene()
 {
+}
+
+SmearScene::~SmearScene()
+{
+    this->removeAllChildren();
+    Director::getInstance()->getTextureCache()->removeUnusedTextures();
 }
 
 Scene* SmearScene::scene()
@@ -32,13 +39,30 @@ bool SmearScene::init()
         return false;
     }
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    SmearColor *sc = SmearColor::createWithShape(Shape::create("images/scrrible_rect.png"));
-    sc->setPaintTexture(Paint::create("images/solid_32_feather.png")->getTexture());
-    sc->setPaintType(SmearNode::PaintType::kPaint);
-    sc->setTargetColor(Color4B(255, 0, 0, 255));
-    sc->setPosition(visibleSize * 0.5f);
-    this->addChild(sc);
+//    SmearColor *sc = SmearColor::createWithShape(Shape::create("images/scrrible_rect.png"));
+//    sc->setPaintTexture(Paint::create("images/solid_32_feather.png")->getTexture());
+//    sc->setPaintType(SmearNode::PaintType::kPaint);
+//    sc->setTargetColor(Color4B(255, 0, 0, 255));
+//    sc->setPosition(visibleSize * 0.5f);
+//    this->addChild(sc);
+    SmearRGBA *srgba = SmearRGBA::createWithRGBA(Color4B(255, 0, 0, 255));
+    srgba->setPaint("images/solid_32_feather.png");
+    srgba->setPaintType(SmearNode::PaintType::kPaint);
+    srgba->setPosition(visibleSize * 0.5f);
+    this->addChild(srgba);
+    srgba->SmearNode::setTarget("images/dim.png");
     
+    EventListenerTouchOneByOne *e1 = EventListenerTouchOneByOne::create();
+    e1->setSwallowTouches(true);
+    e1->onTouchBegan = [=](Touch* t, Event *e){
+        return true;
+    };
+    e1->onTouchMoved = [=](Touch* t, Event *e){
+        srgba->draw(t->getPreviousLocation(), t->getLocation());
+    };
+    e1->onTouchEnded = [=](Touch* t, Event *e){
+    };
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(e1, this);
     
     return true;
     
@@ -70,7 +94,7 @@ bool SmearScene::init()
 //        s->setPaintHardness(0.1f);
         static int i = 1;
         i = ++i % 16 + 1;
-        s->setTargetTexture(Target::create(StringUtils::format("animation/cake/cream/%d.png", i))->getTexture());
+        s->setTarget(Target::create(StringUtils::format("animation/cake/cream/%d.png", i))->getTexture());
 //        s->drawSelf();
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(e, this);

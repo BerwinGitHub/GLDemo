@@ -19,6 +19,7 @@ class SmearScene : public TestBaseScene
 {
 public:
     SmearScene();
+    ~SmearScene();
     static Scene *scene();
     virtual bool init() override;
     virtual string title() override { return "SmearScene"; } ;

@@ -28,7 +28,7 @@
 		5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
 		5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */; };
 		5087E76717EB910900C73F5D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
-		543B993D1D5C8C3A00E8FC4A /* SmearColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543B993B1D5C8C3A00E8FC4A /* SmearColor.cpp */; };
+		543B9B141D5EDFE700E8FC4A /* SmearRGBA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543B9B121D5EDFE700E8FC4A /* SmearRGBA.cpp */; };
 		54567E181C93DA7E00AE90F6 /* GLRippleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E161C93DA7E00AE90F6 /* GLRippleScene.cpp */; };
 		54567E241C93E73700AE90F6 /* BlurHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E1B1C93E73700AE90F6 /* BlurHelper.cpp */; };
 		54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E201C93E73700AE90F6 /* StackBlurSprite.cpp */; };
@@ -53,8 +53,7 @@
 		8076DC231D5B058900E81E10 /* SmearNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8076DC1C1D5B058900E81E10 /* SmearNode.cpp */; };
 		8076DC241D5B058900E81E10 /* GLProgramUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8076DC1F1D5B058900E81E10 /* GLProgramUtility.cpp */; };
 		8076DC271D5B1A3A00E81E10 /* animation in Resources */ = {isa = PBXBuildFile; fileRef = 8076DC261D5B1A3A00E81E10 /* animation */; };
-		807FA2481D5C696900E5CE8A /* SmearColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 807FA2461D5C696900E5CE8A /* SmearColor.cpp */; };
-		807FA24C1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag in Resources */ = {isa = PBXBuildFile; fileRef = 807FA24B1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag */; };
+		807FA24C1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag in Resources */ = {isa = PBXBuildFile; fileRef = 807FA24B1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag */; };
 		808AB54A1C925AD400B9E345 /* TestBaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB5481C925AD400B9E345 /* TestBaseScene.cpp */; };
 		808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB54B1C925D2600B9E345 /* ControllerScene.cpp */; };
 		808AB5511C9268D300B9E345 /* GLHSLScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808AB54F1C9268D300B9E345 /* GLHSLScene.cpp */; };
@@ -89,9 +88,7 @@
 		A22E7BD71B5E12750005A90A /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BC61B5E12750005A90A /* GameKit.framework */; };
 		A22E7BD81B5E12750005A90A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BC71B5E12750005A90A /* MediaPlayer.framework */; };
 		A22E7BD91B5E12750005A90A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BC81B5E12750005A90A /* MessageUI.framework */; };
-		A22E7BDA1B5E12750005A90A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BC91B5E12750005A90A /* PassKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A22E7BDB1B5E12750005A90A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BCA1B5E12750005A90A /* Security.framework */; };
-		A22E7BDC1B5E12750005A90A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BCB1B5E12750005A90A /* StoreKit.framework */; };
 		A22E7BDD1B5E12750005A90A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BCC1B5E12750005A90A /* SystemConfiguration.framework */; };
 		A22E7BEE1B5E249F0005A90A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BE41B5E249F0005A90A /* CoreGraphics.framework */; };
 		A22E7BEF1B5E249F0005A90A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22E7BE51B5E249F0005A90A /* CoreMotion.framework */; };
@@ -277,8 +274,8 @@
 		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		5087E76F17EB910900C73F5D /* GLDemo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GLDemo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		543B993B1D5C8C3A00E8FC4A /* SmearColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SmearColor.cpp; path = ../SmearNode/SmearColor.cpp; sourceTree = "<group>"; };
-		543B993C1D5C8C3A00E8FC4A /* SmearColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SmearColor.hpp; path = ../SmearNode/SmearColor.hpp; sourceTree = "<group>"; };
+		543B9B121D5EDFE700E8FC4A /* SmearRGBA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SmearRGBA.cpp; path = ../SmearNode/SmearRGBA.cpp; sourceTree = "<group>"; };
+		543B9B131D5EDFE700E8FC4A /* SmearRGBA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SmearRGBA.hpp; path = ../SmearNode/SmearRGBA.hpp; sourceTree = "<group>"; };
 		54567E161C93DA7E00AE90F6 /* GLRippleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLRippleScene.cpp; sourceTree = "<group>"; };
 		54567E171C93DA7E00AE90F6 /* GLRippleScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLRippleScene.hpp; sourceTree = "<group>"; };
 		54567E1B1C93E73700AE90F6 /* BlurHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlurHelper.cpp; sourceTree = "<group>"; };
@@ -324,9 +321,7 @@
 		8076DC201D5B058900E81E10 /* GLProgramUtility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLProgramUtility.hpp; sourceTree = "<group>"; };
 		8076DC211D5B058900E81E10 /* smearMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = smearMath.hpp; sourceTree = "<group>"; };
 		8076DC261D5B1A3A00E81E10 /* animation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = animation; sourceTree = "<group>"; };
-		807FA2461D5C696900E5CE8A /* SmearColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmearColor.cpp; sourceTree = "<group>"; };
-		807FA2471D5C696900E5CE8A /* SmearColor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmearColor.hpp; sourceTree = "<group>"; };
-		807FA24B1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SmearColorShaderFrag.frag; sourceTree = "<group>"; };
+		807FA24B1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SmearRGBAShaderFrag.frag; sourceTree = "<group>"; };
 		808AB5481C925AD400B9E345 /* TestBaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestBaseScene.cpp; sourceTree = "<group>"; };
 		808AB5491C925AD400B9E345 /* TestBaseScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestBaseScene.hpp; sourceTree = "<group>"; };
 		808AB54B1C925D2600B9E345 /* ControllerScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerScene.cpp; sourceTree = "<group>"; };
@@ -425,7 +420,6 @@
 				A22E7BD71B5E12750005A90A /* GameKit.framework in Frameworks */,
 				A22E7BD11B5E12750005A90A /* CoreFoundation.framework in Frameworks */,
 				A22E7BD41B5E12750005A90A /* CoreTelephony.framework in Frameworks */,
-				A22E7BDA1B5E12750005A90A /* PassKit.framework in Frameworks */,
 				A22E7BD01B5E12750005A90A /* CoreData.framework in Frameworks */,
 				A22E7BF21B5E249F0005A90A /* OpenAL.framework in Frameworks */,
 				A22E7BCF1B5E12750005A90A /* CFNetwork.framework in Frameworks */,
@@ -445,7 +439,6 @@
 				A22E7BF31B5E249F0005A90A /* OpenGLES.framework in Frameworks */,
 				A20FFA721B3D359900A08F52 /* OpenAL.framework in Frameworks */,
 				A22E7BEE1B5E249F0005A90A /* CoreGraphics.framework in Frameworks */,
-				A22E7BDC1B5E12750005A90A /* StoreKit.framework in Frameworks */,
 				A292315E1B904AC000A56E45 /* MobileCoreServices.framework in Frameworks */,
 				A22E7BCE1B5E12750005A90A /* AssetsLibrary.framework in Frameworks */,
 			);
@@ -752,12 +745,10 @@
 				8076DC181D5B058900E81E10 /* shader */,
 				8076DC1A1D5B058900E81E10 /* SmearArmature.cpp */,
 				8076DC1B1D5B058900E81E10 /* SmearArmature.hpp */,
-				543B993B1D5C8C3A00E8FC4A /* SmearColor.cpp */,
-				543B993C1D5C8C3A00E8FC4A /* SmearColor.hpp */,
 				8076DC1C1D5B058900E81E10 /* SmearNode.cpp */,
 				8076DC1D1D5B058900E81E10 /* SmearNode.hpp */,
-				807FA2461D5C696900E5CE8A /* SmearColor.cpp */,
-				807FA2471D5C696900E5CE8A /* SmearColor.hpp */,
+				543B9B121D5EDFE700E8FC4A /* SmearRGBA.cpp */,
+				543B9B131D5EDFE700E8FC4A /* SmearRGBA.hpp */,
 				8076DC1E1D5B058900E81E10 /* support */,
 			);
 			path = smearnode;
@@ -766,7 +757,7 @@
 		8076DC181D5B058900E81E10 /* shader */ = {
 			isa = PBXGroup;
 			children = (
-				807FA24B1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag */,
+				807FA24B1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag */,
 				8076DC191D5B058900E81E10 /* SmearShaderFrag.frag */,
 			);
 			path = shader;
@@ -900,6 +891,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = HM9CDEP6PK;
+						DevelopmentTeamName = "博文 唐 (Personal Team)";
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GLDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1008,7 +1006,7 @@
 				A20FFA261B3D0CD500A08F52 /* AppIcon29x29@2x.png in Resources */,
 				80038EA11C9117E60030E7F4 /* shaders in Resources */,
 				A20FFA271B3D0CD500A08F52 /* AppIcon40x40.png in Resources */,
-				807FA24C1D5C6A7A00E5CE8A /* SmearColorShaderFrag.frag in Resources */,
+				807FA24C1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag in Resources */,
 				A20FFA241B3D0CD500A08F52 /* Default@2x.png in Resources */,
 				80038E9E1C9117E60030E7F4 /* fonts in Resources */,
 				A20FFA2F1B3D0CD500A08F52 /* AppIcon76x76.png in Resources */,
@@ -1051,11 +1049,11 @@
 			files = (
 				8076DC241D5B058900E81E10 /* GLProgramUtility.cpp in Sources */,
 				801B08C41C8E7B6B00F25ACA /* DragSprite.cpp in Sources */,
+				543B9B141D5EDFE700E8FC4A /* SmearRGBA.cpp in Sources */,
 				80357FC61D49DB47007C148C /* SmearScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				8076DC221D5B058900E81E10 /* SmearArmature.cpp in Sources */,
 				54567E181C93DA7E00AE90F6 /* GLRippleScene.cpp in Sources */,
-				807FA2481D5C696900E5CE8A /* SmearColor.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				54567E241C93E73700AE90F6 /* BlurHelper.cpp in Sources */,
 				54567E2A1C94237E00AE90F6 /* BlurScene.cpp in Sources */,
@@ -1071,7 +1069,6 @@
 				80038F0A1C9165020030E7F4 /* GLMath.cpp in Sources */,
 				808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */,
 				80038F0E1C9165020030E7F4 /* GLClasses.cpp in Sources */,
-				543B993D1D5C8C3A00E8FC4A /* SmearColor.cpp in Sources */,
 				54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */,
 				80038F0B1C9165020030E7F4 /* GLProgramUnifos.cpp in Sources */,
 			);
@@ -1148,8 +1145,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1178,7 +1175,7 @@
 					"-ObjC",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.peter.gl-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.berwin.gl-demo";
 				PRODUCT_NAME = "GLDemo iOS";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1192,8 +1189,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yingru Liu (JCHGF5MPCT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1220,7 +1217,7 @@
 					"-ObjC",
 					"-lxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.peter.gl-demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.berwin.gl-demo";
 				PRODUCT_NAME = "GLDemo iOS";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

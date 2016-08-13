@@ -7,7 +7,7 @@
 //
 
 #define STRINGIFY(A)  #A
-const char* smearColorPositonTextureColor_frag = STRINGIFY(
+const char* SmearRGBAPositonTextureColor_frag = STRINGIFY(
  \n#ifdef GL_ES\n
  precision highp float;
  \n#endif\n
@@ -57,8 +57,7 @@ uniform int v_taret_type_color;
     vec4 lColor;
     if(0.0 == texColor_shape.a){
         discard;
-    }
-    else{
+    } else {
         lColor = texColor_target;
         if(1 == b_paint_anti_aliasing){
             lColor *= texColor.a;
@@ -68,10 +67,9 @@ uniform int v_taret_type_color;
     
     if(0 != b_solid_enable){
         gl_FragColor = lColor;
-    }
-    else{
+    } else {
         float lRate = distance(v_texCoord, vec2(0));
-        lRate /= 2.0;
+        lRate *= 0.5;
         gl_FragColor =  vec4(lColor.r, lColor.g, lColor.b, lColor.a * lRate);
     }
 }

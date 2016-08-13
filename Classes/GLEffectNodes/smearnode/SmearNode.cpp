@@ -54,10 +54,10 @@ bool SmearNode::init(const Target *t, const Paint *p)
         return false;
     }
     this->initShader();
-    this->setPaintTexture(p->getTexture());
+    this->setPaint(p->getTexture());
     this->setPaintType(SmearNode::PaintType::kPaint);
     
-    this->setTargetTexture(t->getTexture());
+    this->setTarget(t->getTexture());
     
     return true;
 }
@@ -100,13 +100,13 @@ void SmearNode::drawSelf()
     float hard = this->getPaintHardness();
     SmearNode::PaintType eType = this->getPaintType();
     
-    this->setPaintTexture(_pTarget->getTexture());
+    this->setPaint(_pTarget->getTexture());
     this->setPaintHardness(1.0f);
     this->setPaintType(SmearNode::PaintType::kPaint);
     
     this->SmearNode::draw(this->getSprite()->convertToWorldSpace(_sTargetMiddle));
     
-    this->setPaintTexture(texture);
+    this->setPaint(texture);
     this->setPaintHardness(hard);
     this->setPaintType(eType);
 }
@@ -168,7 +168,7 @@ SmearNode::PaintType SmearNode::getPaintType()
     return _ePaintType;
 }
 
-void SmearNode::setPaintTexture(cocos2d::Texture2D *tex)
+void SmearNode::setPaint(cocos2d::Texture2D *tex)
 {
     if (!tex)
         return;
@@ -178,16 +178,29 @@ void SmearNode::setPaintTexture(cocos2d::Texture2D *tex)
     this->bindPaintTexture();
 }
 
-void SmearNode::setTargetTexture(cocos2d::Texture2D *tex)
+void SmearNode::setTarget(cocos2d::Texture2D *tex)
 {
     if (!tex)
         return;
     Size ts = tex->getContentSize();
+    this->initWithWidthAndHeight(ts.width, ts.height, Texture2D::PixelFormat::RGBA8888, 0);
     _pTarget->setPosition(this->getSprite()->getContentSize() * 0.5f);
     SpriteFrame *frame = SpriteFrame::createWithTexture(tex, Rect(0, 0, ts.width, ts.height));
     _pTarget->setSpriteFrame(frame);
     _sTargetMiddle = _pTarget->getContentSize() * 0.5f;
     this->bindTargetTexture();
+}
+
+void SmearNode::setPaint(const string &file)
+{
+    Texture2D *t = Director::getInstance()->getTextureCache()->addImage(file);
+    this->setPaint(t);
+}
+
+void SmearNode::setTarget(const string &file)
+{
+    Texture2D *t = Director::getInstance()->getTextureCache()->addImage(file);
+    this->setTarget(t);
 }
 
 Target *SmearNode::getTarget()
@@ -249,6 +262,19 @@ void SmearNode::bindTargetTexture()
 {
     GLUtility::bindUniformVec2(_pPaint, "v_texSize_target", _pTarget->getContentSize());
     GLUtility::bindUniformTexture(_pPaint, "s_texture_target", _pTarget->getTexture());
+}
+
+void SmearNode::setAntiAliasingPaint(bool enable)
+{
+    this->bindAntiAliasingPaint(enable);
+}
+
+void SmearNode::antiAliasing(){
+    this->getSprite()->getTexture()->setAntiAliasTexParameters();
+}
+
+void SmearNode::disAntiAliasing(){
+    this->getSprite()->getTexture()->setAliasTexParameters();
 }
 
 void SmearNode::onEnter()
