@@ -184,11 +184,12 @@ void SmearNode::setTarget(cocos2d::Texture2D *tex)
 {
     if (!tex) // tex size same as before setting.
         return;
+    
     Size ts = tex->getContentSize();
-    _pTarget->setPosition(this->getSprite()->getContentSize() * 0.5f);
     SpriteFrame *frame = SpriteFrame::createWithTexture(tex, Rect(0, 0, ts.width, ts.height));
     _pTarget->setSpriteFrame(frame);
     _sTargetMiddle = _pTarget->getContentSize() * 0.5f;
+    _pTarget->setPosition(this->getSprite()->getContentSize() * 0.5f);
     this->bindTargetTexture();
 }
 

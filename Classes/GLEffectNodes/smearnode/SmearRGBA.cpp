@@ -72,12 +72,12 @@ void SmearRGBA::bindShapeTexture()
 void SmearRGBA::setTarget(cocos2d::Texture2D *tex)
 {
     SmearNode::setTarget(tex);
-    GLUtility::bindUniformInt(_pPaint, "v_taret_type_color", 0);
+    GLUtility::bindUniformInt(_pPaint, "b_color_enable", 0);
 }
 
 void SmearRGBA::setTargetColor(const cocos2d::Color4F &c)
 {
-    GLUtility::bindUniformInt(_pPaint, "v_taret_type_color", 1);
+    GLUtility::bindUniformInt(_pPaint, "b_color_enable", 1);
     GLUtility::bindUniformVec4(_pPaint, "v_color_target", Vec4(c.r, c.g, c.b, c.a));
 }
 
@@ -97,22 +97,12 @@ bool SmearRGBA::isReverse()
     return _bReverse;
 }
 
-void SmearRGBA::randomColor()
-{
-    auto seq = Sequence::create(DelayTime::create(0.05f), CallFunc::create([=](){
-        this->setTargetColor(Color4B(rand() % 255, rand() % 255, rand() % 255, 255));
-    }), nullptr);
-    this->runAction(RepeatForever::create(seq));
-}
-
 void SmearRGBA::onEnter()
 {
     SmearNode::onEnter();
-    this->randomColor();
 }
 
 void SmearRGBA::onExit()
 {
-    this->stopAllActions();
     SmearNode::onExit();
 }

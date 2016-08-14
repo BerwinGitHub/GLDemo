@@ -34,6 +34,32 @@
 		54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E201C93E73700AE90F6 /* StackBlurSprite.cpp */; };
 		54567E261C93E73700AE90F6 /* VisualEffectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E221C93E73700AE90F6 /* VisualEffectLayer.cpp */; };
 		54567E2A1C94237E00AE90F6 /* BlurScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54567E281C94237E00AE90F6 /* BlurScene.cpp */; };
+		548C36E91D5F643B001F57CB /* SmearSegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36E71D5F643B001F57CB /* SmearSegment.cpp */; };
+		548C36EB1D5F6540001F57CB /* SmearSegmentShaderFrag.frag in Resources */ = {isa = PBXBuildFile; fileRef = 548C36EA1D5F6540001F57CB /* SmearSegmentShaderFrag.frag */; };
+		548C371A1D60B06B001F57CB /* BoundaryFillNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36EE1D60B06B001F57CB /* BoundaryFillNode.cpp */; };
+		548C371B1D60B06B001F57CB /* ColorFillNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36F01D60B06B001F57CB /* ColorFillNode.cpp */; };
+		548C371C1D60B06B001F57CB /* Coloring.frag in Resources */ = {isa = PBXBuildFile; fileRef = 548C36F21D60B06B001F57CB /* Coloring.frag */; };
+		548C371D1D60B06B001F57CB /* ColoringLineFrameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36F31D60B06B001F57CB /* ColoringLineFrameNode.cpp */; };
+		548C371E1D60B06B001F57CB /* ColoringLineFrameTouchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36F51D60B06B001F57CB /* ColoringLineFrameTouchNode.cpp */; };
+		548C371F1D60B06B001F57CB /* ColoringNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36F71D60B06B001F57CB /* ColoringNode.cpp */; };
+		548C37201D60B06B001F57CB /* ColoringTouchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36F91D60B06B001F57CB /* ColoringTouchNode.cpp */; };
+		548C37211D60B06B001F57CB /* Pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36FB1D60B06B001F57CB /* Pattern.cpp */; };
+		548C37221D60B06B001F57CB /* ZoomLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36FD1D60B06B001F57CB /* ZoomLayer.cpp */; };
+		548C37231D60B06B001F57CB /* FillNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C36FF1D60B06B001F57CB /* FillNode.cpp */; };
+		548C37241D60B06B001F57CB /* Scribble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37011D60B06B001F57CB /* Scribble.cpp */; };
+		548C37251D60B06B001F57CB /* ScribbleArmatureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37031D60B06B001F57CB /* ScribbleArmatureNode.cpp */; };
+		548C37261D60B06B001F57CB /* ScribbleLineFrameNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37051D60B06B001F57CB /* ScribbleLineFrameNode.cpp */; };
+		548C37271D60B06B001F57CB /* ScribbleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37071D60B06B001F57CB /* ScribbleNode.cpp */; };
+		548C37281D60B06B001F57CB /* ScribblePattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37091D60B06B001F57CB /* ScribblePattern.cpp */; };
+		548C37291D60B06B001F57CB /* ScribblePatternNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C370B1D60B06B001F57CB /* ScribblePatternNode.cpp */; };
+		548C372A1D60B06B001F57CB /* ScribblePatternShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 548C370D1D60B06B001F57CB /* ScribblePatternShader.frag */; };
+		548C372B1D60B06B001F57CB /* ScribbleShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 548C370E1D60B06B001F57CB /* ScribbleShader.frag */; };
+		548C372C1D60B06B001F57CB /* ScribbleShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C370F1D60B06B001F57CB /* ScribbleShape.cpp */; };
+		548C372D1D60B06B001F57CB /* ScribbleShapeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37111D60B06B001F57CB /* ScribbleShapeNode.cpp */; };
+		548C372E1D60B06B001F57CB /* ScribbleShapeShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 548C37131D60B06B001F57CB /* ScribbleShapeShader.frag */; };
+		548C372F1D60B06B001F57CB /* ScribbleTouchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37141D60B06B001F57CB /* ScribbleTouchNode.cpp */; };
+		548C37301D60B06B001F57CB /* ScribbleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37161D60B06B001F57CB /* ScribbleUtil.cpp */; };
+		548C37311D60B06B001F57CB /* ScribbleWireframeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548C37181D60B06B001F57CB /* ScribbleWireframeNode.cpp */; };
 		80038E9C1C9117E60030E7F4 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 80038E961C9117E60030E7F4 /* CloseNormal.png */; };
 		80038E9D1C9117E60030E7F4 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 80038E971C9117E60030E7F4 /* CloseSelected.png */; };
 		80038E9E1C9117E60030E7F4 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 80038E981C9117E60030E7F4 /* fonts */; };
@@ -288,6 +314,53 @@
 		54567E231C93E73700AE90F6 /* VisualEffectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VisualEffectLayer.hpp; sourceTree = "<group>"; };
 		54567E281C94237E00AE90F6 /* BlurScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlurScene.cpp; sourceTree = "<group>"; };
 		54567E291C94237E00AE90F6 /* BlurScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BlurScene.hpp; sourceTree = "<group>"; };
+		548C36E71D5F643B001F57CB /* SmearSegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SmearSegment.cpp; path = ../SmearNode/SmearSegment.cpp; sourceTree = "<group>"; };
+		548C36E81D5F643B001F57CB /* SmearSegment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SmearSegment.hpp; path = ../SmearNode/SmearSegment.hpp; sourceTree = "<group>"; };
+		548C36EA1D5F6540001F57CB /* SmearSegmentShaderFrag.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SmearSegmentShaderFrag.frag; path = ../../SmearNode/shader/SmearSegmentShaderFrag.frag; sourceTree = "<group>"; };
+		548C36EE1D60B06B001F57CB /* BoundaryFillNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundaryFillNode.cpp; sourceTree = "<group>"; };
+		548C36EF1D60B06B001F57CB /* BoundaryFillNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundaryFillNode.h; sourceTree = "<group>"; };
+		548C36F01D60B06B001F57CB /* ColorFillNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorFillNode.cpp; sourceTree = "<group>"; };
+		548C36F11D60B06B001F57CB /* ColorFillNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorFillNode.h; sourceTree = "<group>"; };
+		548C36F21D60B06B001F57CB /* Coloring.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Coloring.frag; sourceTree = "<group>"; };
+		548C36F31D60B06B001F57CB /* ColoringLineFrameNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColoringLineFrameNode.cpp; sourceTree = "<group>"; };
+		548C36F41D60B06B001F57CB /* ColoringLineFrameNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoringLineFrameNode.h; sourceTree = "<group>"; };
+		548C36F51D60B06B001F57CB /* ColoringLineFrameTouchNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColoringLineFrameTouchNode.cpp; sourceTree = "<group>"; };
+		548C36F61D60B06B001F57CB /* ColoringLineFrameTouchNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoringLineFrameTouchNode.h; sourceTree = "<group>"; };
+		548C36F71D60B06B001F57CB /* ColoringNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColoringNode.cpp; sourceTree = "<group>"; };
+		548C36F81D60B06B001F57CB /* ColoringNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoringNode.h; sourceTree = "<group>"; };
+		548C36F91D60B06B001F57CB /* ColoringTouchNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColoringTouchNode.cpp; sourceTree = "<group>"; };
+		548C36FA1D60B06B001F57CB /* ColoringTouchNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoringTouchNode.h; sourceTree = "<group>"; };
+		548C36FB1D60B06B001F57CB /* Pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pattern.cpp; sourceTree = "<group>"; };
+		548C36FC1D60B06B001F57CB /* Pattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pattern.h; sourceTree = "<group>"; };
+		548C36FD1D60B06B001F57CB /* ZoomLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomLayer.cpp; sourceTree = "<group>"; };
+		548C36FE1D60B06B001F57CB /* ZoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomLayer.h; sourceTree = "<group>"; };
+		548C36FF1D60B06B001F57CB /* FillNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FillNode.cpp; sourceTree = "<group>"; };
+		548C37001D60B06B001F57CB /* FillNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillNode.h; sourceTree = "<group>"; };
+		548C37011D60B06B001F57CB /* Scribble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scribble.cpp; sourceTree = "<group>"; };
+		548C37021D60B06B001F57CB /* Scribble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scribble.h; sourceTree = "<group>"; };
+		548C37031D60B06B001F57CB /* ScribbleArmatureNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleArmatureNode.cpp; sourceTree = "<group>"; };
+		548C37041D60B06B001F57CB /* ScribbleArmatureNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleArmatureNode.h; sourceTree = "<group>"; };
+		548C37051D60B06B001F57CB /* ScribbleLineFrameNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleLineFrameNode.cpp; sourceTree = "<group>"; };
+		548C37061D60B06B001F57CB /* ScribbleLineFrameNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleLineFrameNode.h; sourceTree = "<group>"; };
+		548C37071D60B06B001F57CB /* ScribbleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleNode.cpp; sourceTree = "<group>"; };
+		548C37081D60B06B001F57CB /* ScribbleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleNode.h; sourceTree = "<group>"; };
+		548C37091D60B06B001F57CB /* ScribblePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribblePattern.cpp; sourceTree = "<group>"; };
+		548C370A1D60B06B001F57CB /* ScribblePattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribblePattern.h; sourceTree = "<group>"; };
+		548C370B1D60B06B001F57CB /* ScribblePatternNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribblePatternNode.cpp; sourceTree = "<group>"; };
+		548C370C1D60B06B001F57CB /* ScribblePatternNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribblePatternNode.h; sourceTree = "<group>"; };
+		548C370D1D60B06B001F57CB /* ScribblePatternShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScribblePatternShader.frag; sourceTree = "<group>"; };
+		548C370E1D60B06B001F57CB /* ScribbleShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScribbleShader.frag; sourceTree = "<group>"; };
+		548C370F1D60B06B001F57CB /* ScribbleShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleShape.cpp; sourceTree = "<group>"; };
+		548C37101D60B06B001F57CB /* ScribbleShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleShape.h; sourceTree = "<group>"; };
+		548C37111D60B06B001F57CB /* ScribbleShapeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleShapeNode.cpp; sourceTree = "<group>"; };
+		548C37121D60B06B001F57CB /* ScribbleShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleShapeNode.h; sourceTree = "<group>"; };
+		548C37131D60B06B001F57CB /* ScribbleShapeShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScribbleShapeShader.frag; sourceTree = "<group>"; };
+		548C37141D60B06B001F57CB /* ScribbleTouchNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleTouchNode.cpp; sourceTree = "<group>"; };
+		548C37151D60B06B001F57CB /* ScribbleTouchNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleTouchNode.h; sourceTree = "<group>"; };
+		548C37161D60B06B001F57CB /* ScribbleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleUtil.cpp; sourceTree = "<group>"; };
+		548C37171D60B06B001F57CB /* ScribbleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleUtil.h; sourceTree = "<group>"; };
+		548C37181D60B06B001F57CB /* ScribbleWireframeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScribbleWireframeNode.cpp; sourceTree = "<group>"; };
+		548C37191D60B06B001F57CB /* ScribbleWireframeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScribbleWireframeNode.h; sourceTree = "<group>"; };
 		80038E961C9117E60030E7F4 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		80038E971C9117E60030E7F4 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		80038E981C9117E60030E7F4 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
@@ -659,6 +732,65 @@
 			path = BlurScene;
 			sourceTree = "<group>";
 		};
+		548C36EC1D60B06B001F57CB /* scribble */ = {
+			isa = PBXGroup;
+			children = (
+				548C36ED1D60B06B001F57CB /* Coloring */,
+				548C36FF1D60B06B001F57CB /* FillNode.cpp */,
+				548C37001D60B06B001F57CB /* FillNode.h */,
+				548C37011D60B06B001F57CB /* Scribble.cpp */,
+				548C37021D60B06B001F57CB /* Scribble.h */,
+				548C37031D60B06B001F57CB /* ScribbleArmatureNode.cpp */,
+				548C37041D60B06B001F57CB /* ScribbleArmatureNode.h */,
+				548C37051D60B06B001F57CB /* ScribbleLineFrameNode.cpp */,
+				548C37061D60B06B001F57CB /* ScribbleLineFrameNode.h */,
+				548C37071D60B06B001F57CB /* ScribbleNode.cpp */,
+				548C37081D60B06B001F57CB /* ScribbleNode.h */,
+				548C37091D60B06B001F57CB /* ScribblePattern.cpp */,
+				548C370A1D60B06B001F57CB /* ScribblePattern.h */,
+				548C370B1D60B06B001F57CB /* ScribblePatternNode.cpp */,
+				548C370C1D60B06B001F57CB /* ScribblePatternNode.h */,
+				548C370D1D60B06B001F57CB /* ScribblePatternShader.frag */,
+				548C370E1D60B06B001F57CB /* ScribbleShader.frag */,
+				548C370F1D60B06B001F57CB /* ScribbleShape.cpp */,
+				548C37101D60B06B001F57CB /* ScribbleShape.h */,
+				548C37111D60B06B001F57CB /* ScribbleShapeNode.cpp */,
+				548C37121D60B06B001F57CB /* ScribbleShapeNode.h */,
+				548C37131D60B06B001F57CB /* ScribbleShapeShader.frag */,
+				548C37141D60B06B001F57CB /* ScribbleTouchNode.cpp */,
+				548C37151D60B06B001F57CB /* ScribbleTouchNode.h */,
+				548C37161D60B06B001F57CB /* ScribbleUtil.cpp */,
+				548C37171D60B06B001F57CB /* ScribbleUtil.h */,
+				548C37181D60B06B001F57CB /* ScribbleWireframeNode.cpp */,
+				548C37191D60B06B001F57CB /* ScribbleWireframeNode.h */,
+			);
+			path = scribble;
+			sourceTree = "<group>";
+		};
+		548C36ED1D60B06B001F57CB /* Coloring */ = {
+			isa = PBXGroup;
+			children = (
+				548C36EE1D60B06B001F57CB /* BoundaryFillNode.cpp */,
+				548C36EF1D60B06B001F57CB /* BoundaryFillNode.h */,
+				548C36F01D60B06B001F57CB /* ColorFillNode.cpp */,
+				548C36F11D60B06B001F57CB /* ColorFillNode.h */,
+				548C36F21D60B06B001F57CB /* Coloring.frag */,
+				548C36F31D60B06B001F57CB /* ColoringLineFrameNode.cpp */,
+				548C36F41D60B06B001F57CB /* ColoringLineFrameNode.h */,
+				548C36F51D60B06B001F57CB /* ColoringLineFrameTouchNode.cpp */,
+				548C36F61D60B06B001F57CB /* ColoringLineFrameTouchNode.h */,
+				548C36F71D60B06B001F57CB /* ColoringNode.cpp */,
+				548C36F81D60B06B001F57CB /* ColoringNode.h */,
+				548C36F91D60B06B001F57CB /* ColoringTouchNode.cpp */,
+				548C36FA1D60B06B001F57CB /* ColoringTouchNode.h */,
+				548C36FB1D60B06B001F57CB /* Pattern.cpp */,
+				548C36FC1D60B06B001F57CB /* Pattern.h */,
+				548C36FD1D60B06B001F57CB /* ZoomLayer.cpp */,
+				548C36FE1D60B06B001F57CB /* ZoomLayer.h */,
+			);
+			path = Coloring;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +810,7 @@
 		80038EF61C9165010030E7F4 /* GLEffectNodes */ = {
 			isa = PBXGroup;
 			children = (
+				548C36EC1D60B06B001F57CB /* scribble */,
 				8076DC171D5B058900E81E10 /* smearnode */,
 				54567E191C93E73700AE90F6 /* Blur */,
 				80038EF71C9165010030E7F4 /* HSLSprite */,
@@ -749,6 +882,8 @@
 				8076DC1D1D5B058900E81E10 /* SmearNode.hpp */,
 				543B9B121D5EDFE700E8FC4A /* SmearRGBA.cpp */,
 				543B9B131D5EDFE700E8FC4A /* SmearRGBA.hpp */,
+				548C36E71D5F643B001F57CB /* SmearSegment.cpp */,
+				548C36E81D5F643B001F57CB /* SmearSegment.hpp */,
 				8076DC1E1D5B058900E81E10 /* support */,
 			);
 			path = smearnode;
@@ -757,6 +892,7 @@
 		8076DC181D5B058900E81E10 /* shader */ = {
 			isa = PBXGroup;
 			children = (
+				548C36EA1D5F6540001F57CB /* SmearSegmentShaderFrag.frag */,
 				807FA24B1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag */,
 				8076DC191D5B058900E81E10 /* SmearShaderFrag.frag */,
 			);
@@ -1008,9 +1144,12 @@
 				A20FFA271B3D0CD500A08F52 /* AppIcon40x40.png in Resources */,
 				807FA24C1D5C6A7A00E5CE8A /* SmearRGBAShaderFrag.frag in Resources */,
 				A20FFA241B3D0CD500A08F52 /* Default@2x.png in Resources */,
+				548C372A1D60B06B001F57CB /* ScribblePatternShader.frag in Resources */,
 				80038E9E1C9117E60030E7F4 /* fonts in Resources */,
 				A20FFA2F1B3D0CD500A08F52 /* AppIcon76x76.png in Resources */,
 				8076DC271D5B1A3A00E81E10 /* animation in Resources */,
+				548C371C1D60B06B001F57CB /* Coloring.frag in Resources */,
+				548C372B1D60B06B001F57CB /* ScribbleShader.frag in Resources */,
 				A20FFA2E1B3D0CD500A08F52 /* AppIcon72x72@2x.png in Resources */,
 				80038E9D1C9117E60030E7F4 /* CloseSelected.png in Resources */,
 				80038F111C9165530030E7F4 /* HSLShader.frag in Resources */,
@@ -1022,8 +1161,10 @@
 				A20FFA281B3D0CD500A08F52 /* AppIcon40x40@2x.png in Resources */,
 				A20FFA251B3D0CD500A08F52 /* AppIcon29x29.png in Resources */,
 				A20FFA2D1B3D0CD500A08F52 /* AppIcon72x72.png in Resources */,
+				548C36EB1D5F6540001F57CB /* SmearSegmentShaderFrag.frag in Resources */,
 				A20FFA2C1B3D0CD500A08F52 /* AppIcon60x60@2x.png in Resources */,
 				80038E9F1C9117E60030E7F4 /* HelloWorld_drag.png in Resources */,
+				548C372E1D60B06B001F57CB /* ScribbleShapeShader.frag in Resources */,
 				A20FFA301B3D0CD500A08F52 /* AppIcon76x76@2x.png in Resources */,
 				A20FFA2B1B3D0CD500A08F52 /* AppIcon60x60.png in Resources */,
 				80038EA01C9117E60030E7F4 /* HelloWorld.png in Resources */,
@@ -1047,28 +1188,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548C372F1D60B06B001F57CB /* ScribbleTouchNode.cpp in Sources */,
+				548C37301D60B06B001F57CB /* ScribbleUtil.cpp in Sources */,
 				8076DC241D5B058900E81E10 /* GLProgramUtility.cpp in Sources */,
 				801B08C41C8E7B6B00F25ACA /* DragSprite.cpp in Sources */,
+				548C37291D60B06B001F57CB /* ScribblePatternNode.cpp in Sources */,
+				548C37221D60B06B001F57CB /* ZoomLayer.cpp in Sources */,
+				548C37241D60B06B001F57CB /* Scribble.cpp in Sources */,
 				543B9B141D5EDFE700E8FC4A /* SmearRGBA.cpp in Sources */,
 				80357FC61D49DB47007C148C /* SmearScene.cpp in Sources */,
+				548C37281D60B06B001F57CB /* ScribblePattern.cpp in Sources */,
+				548C371D1D60B06B001F57CB /* ColoringLineFrameNode.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				8076DC221D5B058900E81E10 /* SmearArmature.cpp in Sources */,
+				548C372D1D60B06B001F57CB /* ScribbleShapeNode.cpp in Sources */,
+				548C371B1D60B06B001F57CB /* ColorFillNode.cpp in Sources */,
+				548C37251D60B06B001F57CB /* ScribbleArmatureNode.cpp in Sources */,
 				54567E181C93DA7E00AE90F6 /* GLRippleScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				54567E241C93E73700AE90F6 /* BlurHelper.cpp in Sources */,
 				54567E2A1C94237E00AE90F6 /* BlurScene.cpp in Sources */,
 				80038F091C9165020030E7F4 /* RippleSprite.cpp in Sources */,
+				548C37261D60B06B001F57CB /* ScribbleLineFrameNode.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				548C371F1D60B06B001F57CB /* ColoringNode.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				54567E261C93E73700AE90F6 /* VisualEffectLayer.cpp in Sources */,
 				8076DC231D5B058900E81E10 /* SmearNode.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				548C371E1D60B06B001F57CB /* ColoringLineFrameTouchNode.cpp in Sources */,
+				548C36E91D5F643B001F57CB /* SmearSegment.cpp in Sources */,
 				808AB5511C9268D300B9E345 /* GLHSLScene.cpp in Sources */,
+				548C37201D60B06B001F57CB /* ColoringTouchNode.cpp in Sources */,
 				80038F081C9165010030E7F4 /* HSLSprite.cpp in Sources */,
 				808AB54A1C925AD400B9E345 /* TestBaseScene.cpp in Sources */,
 				80038F0A1C9165020030E7F4 /* GLMath.cpp in Sources */,
+				548C37211D60B06B001F57CB /* Pattern.cpp in Sources */,
 				808AB54D1C925D2600B9E345 /* ControllerScene.cpp in Sources */,
+				548C371A1D60B06B001F57CB /* BoundaryFillNode.cpp in Sources */,
+				548C37271D60B06B001F57CB /* ScribbleNode.cpp in Sources */,
+				548C37231D60B06B001F57CB /* FillNode.cpp in Sources */,
+				548C37311D60B06B001F57CB /* ScribbleWireframeNode.cpp in Sources */,
 				80038F0E1C9165020030E7F4 /* GLClasses.cpp in Sources */,
+				548C372C1D60B06B001F57CB /* ScribbleShape.cpp in Sources */,
 				54567E251C93E73700AE90F6 /* StackBlurSprite.cpp in Sources */,
 				80038F0B1C9165020030E7F4 /* GLProgramUnifos.cpp in Sources */,
 			);

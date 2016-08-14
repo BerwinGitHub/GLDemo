@@ -101,11 +101,11 @@ protected:
     
     CC_SYNTHESIZE(Size, _sTargetMiddle, TargetMiddle);
     CC_SYNTHESIZE(Size, _sPaintMiddle, PaintMiddle);
+    CC_SYNTHESIZE(Size, _sCanvaSize, CanvaSize);
     
 public:
     virtual void onEnter() override;
     virtual void onExit() override;
-    
 };
 
 

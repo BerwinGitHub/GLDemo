@@ -36,8 +36,6 @@ public:
     virtual void setReverse(bool reverse);
     virtual bool isReverse();
     
-    virtual void randomColor();
-    
 public:
     virtual void initShader() override;
     

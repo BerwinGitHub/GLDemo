@@ -26,6 +26,12 @@ public:
     
     CREATE_FUNC(SmearScene);
     
+public:
+    void testSmearSegment(const Size &s);
+    void testSmearRGBA(const Size &s);
+    void testSmearArmature(const Size &s);
+    void testSmearNode(const Size &s);
+    
 };
 
 #endif /* SmearScene_hpp */

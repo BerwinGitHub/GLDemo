@@ -30,7 +30,7 @@ uniform sampler2D s_texture_shape;
 uniform vec2 v_texSize_shape;
                                                            
 uniform vec4 v_color_target;
-uniform int v_taret_type_color;
+uniform int b_color_enable;
                                                           
 void main()
 {
@@ -43,7 +43,7 @@ void main()
         discard;
     
     vec4 texColor_target = v_color_target;
-    if(0 == v_taret_type_color){// texture
+    if(0 == b_color_enable){// texture
         vec2 v_texCoord2 = (v_texCoord_target + v_texCoord * v_texSize_paint) / v_texSize_target;
         texColor_target = texture2D(s_texture_target, v_texCoord2);
     }

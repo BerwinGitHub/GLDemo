@@ -70,16 +70,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/GLEffectNodes/smearnode/SmearNode.cpp"
-            timestampString = "492777643.973208"
+            filePath = "../Classes/TestScene/SmearScene/SmearScene.cpp"
+            timestampString = "492879034.048882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "SmearNode::initShader()"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "SmearScene::testSmearSegment(const Size &amp;s)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
