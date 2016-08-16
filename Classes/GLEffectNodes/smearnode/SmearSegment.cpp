@@ -44,7 +44,7 @@ bool SmearSegment::initWithSegment(const string &segment, const string &target)
     _pImage = new Image();
     _pImage->initWithImageFile(segment);
     
-    this->getSprite()->setBlendFunc(BlendFunc::ALPHA_PREMULTIPLIED);
+//    this->getSprite()->setBlendFunc(BlendFunc::ALPHA_PREMULTIPLIED);
     
     return true;
 }
