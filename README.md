@@ -1,2 +1,2 @@
 # GLDemo
-OpenGL Demo
+OpenGL Demo Library
